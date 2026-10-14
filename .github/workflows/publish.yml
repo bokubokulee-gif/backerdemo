@@ -1,0 +1,165 @@
+name: Publish BlueFocus demo
+
+on:
+  push:
+    branches: [main]
+    paths: [public-release.zip, .github/workflows/publish.yml]
+  workflow_dispatch:
+    inputs:
+      archive_sha256:
+        description: SHA-256 of the reviewed public-release.zip
+        required: true
+        default: 4c8790bc2713021421695cd79d9717f8b77fab6355fb3673c5aff0d30d5614d0
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: bluefocus-pages
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    if: github.repository == 'bokubokulee-gif/backerdemo' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+      pages: read
+    outputs:
+      ready: ${{ steps.archive.outputs.present }}
+    steps:
+      - name: Check out main
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+
+      - name: Detect pending archive
+        id: archive
+        shell: bash
+        run: |
+          if [[ -f public-release.zip ]]; then
+            echo "present=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "present=false" >> "$GITHUB_OUTPUT"
+            echo "No pending public-release.zip; nothing to publish." >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Validate and unpack public files
+        if: steps.archive.outputs.present == 'true'
+        env:
+          EXPECTED_SHA: ${{ inputs.archive_sha256 || vars.PUBLIC_RELEASE_SHA256 || '4c8790bc2713021421695cd79d9717f8b77fab6355fb3673c5aff0d30d5614d0' }}
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import hashlib, json, os, re, stat, zipfile
+          from pathlib import Path, PurePosixPath
+          archive = Path('public-release.zip')
+          expected = os.environ['EXPECTED_SHA'].strip().lower()
+          assert re.fullmatch(r'[0-9a-f]{64}', expected), 'Invalid expected SHA-256'
+          assert archive.stat().st_size <= 25 * 1024 * 1024, 'Archive too large'
+          assert hashlib.sha256(archive.read_bytes()).hexdigest() == expected, 'Archive SHA-256 mismatch'
+          target = Path(os.environ['RUNNER_TEMP']) / 'bluefocus-static'
+          target.mkdir()
+          root_files = {'.nojekyll', 'index.html', 'bluefocus.html', 'launch.mjs',
+                        'launch.css', 'launch-brand.css', 'launch-evidence.json',
+                        'launch-config.mjs', 'api-client.mjs', 'extract-brief.mjs'}
+          roots = {'assets', 'brand', 'vendor'}
+          suffixes = {'.html', '.css', '.js', '.mjs', '.json', '.svg', '.png', '.jpg',
+                      '.jpeg', '.webp', '.ico', '.woff', '.woff2', '.ttf', '.txt',
+                      '.wasm', '.bcmap', '.pfb'}
+          blocked = {'api', 'lib', 'tests', 'scripts', 'research', 'briefs', 'node_modules',
+                     'launch-model.mjs', 'model.mjs', 'server.mjs', 'package.json'}
+          seen, manifest, total = set(), [], 0
+          with zipfile.ZipFile(archive) as z:
+              assert len(z.infolist()) <= 1000, 'Too many archive entries'
+              for item in z.infolist():
+                  name = item.filename
+                  path = PurePosixPath(name)
+                  assert name and '\\' not in name and '\x00' not in name, 'Invalid ZIP path'
+                  assert not path.is_absolute() and '..' not in path.parts, 'ZIP traversal'
+                  assert path.as_posix() == name.rstrip('/'), 'Noncanonical ZIP path'
+                  assert name not in seen, 'Duplicate ZIP entry'
+                  seen.add(name)
+                  mode = stat.S_IFMT(item.external_attr >> 16)
+                  assert mode in {0, stat.S_IFREG, stat.S_IFDIR}, 'Links/devices forbidden'
+                  assert not any(p in blocked or p.startswith('.') for p in path.parts if p != '.nojekyll'), 'Private path'
+                  if item.is_dir():
+                      assert path.parts[0] in roots, 'Unapproved directory'
+                      continue
+                  assert name in root_files or path.parts[0] in roots, 'Unapproved public path'
+                  license_file = name.startswith('vendor/pdfjs/') and path.name.startswith('LICENSE')
+                  assert path.suffix.lower() in suffixes or name == '.nojekyll' or license_file, 'Unapproved file type'
+                  total += item.file_size
+                  assert total <= 40 * 1024 * 1024, 'Expanded archive too large'
+                  data = z.read(item)
+                  destination = target.joinpath(*path.parts)
+                  destination.parent.mkdir(parents=True, exist_ok=True)
+                  destination.write_bytes(data)
+                  manifest.append({'path': name, 'bytes': len(data), 'sha256': hashlib.sha256(data).hexdigest()})
+          assert root_files.issubset(seen), 'Required public files missing'
+          (Path(os.environ['RUNNER_TEMP']) / 'public-manifest.json').write_text(json.dumps(manifest, indent=2))
+          with open(os.environ['GITHUB_STEP_SUMMARY'], 'a') as summary:
+              summary.write(f'Validated {len(manifest)} public files ({total:,} bytes).\n\nArchive SHA-256: `{expected}`\n')
+          PY
+
+      - name: Configure Pages
+        if: steps.archive.outputs.present == 'true'
+        uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6.0.0
+
+      - name: Synchronize main and the static gh-pages branch
+        if: steps.archive.outputs.present == 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          python3 - <<'PY'
+          import os, shutil, subprocess
+          from pathlib import Path
+          for raw in subprocess.check_output(['git', 'ls-files', '-z']).split(b'\0'):
+              if not raw:
+                  continue
+              name = raw.decode()
+              if name == 'README.md' or name.startswith('.github/'):
+                  continue
+              Path(name).unlink(missing_ok=True)
+          shutil.copytree(Path(os.environ['RUNNER_TEMP']) / 'bluefocus-static', '.', dirs_exist_ok=True)
+          PY
+          git add --all
+          git commit --quiet -m 'Publish reviewed BlueFocus static release [skip ci]'
+          pages_index="$RUNNER_TEMP/bluefocus-pages-index"
+          GIT_INDEX_FILE="$pages_index" git read-tree --empty
+          GIT_INDEX_FILE="$pages_index" git --work-tree="$RUNNER_TEMP/bluefocus-static" add --all -- .
+          pages_tree=$(GIT_INDEX_FILE="$pages_index" git write-tree)
+          if git ls-remote --exit-code --heads origin gh-pages >/dev/null; then
+            git fetch origin gh-pages
+            pages_commit=$(git commit-tree "$pages_tree" -p "$(git rev-parse FETCH_HEAD)" -m 'Publish reviewed BlueFocus static artifact')
+          else
+            pages_commit=$(git commit-tree "$pages_tree" -m 'Publish reviewed BlueFocus static artifact')
+          fi
+          git push --atomic origin HEAD:main "$pages_commit:refs/heads/gh-pages"
+          echo "Static gh-pages tree: \`$pages_tree\`" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload only the validated static artifact
+        if: steps.archive.outputs.present == 'true'
+        uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
+        with:
+          path: ${{ runner.temp }}/bluefocus-static
+
+  deploy:
+    needs: publish
+    if: needs.publish.outputs.ready == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5.0.1
