@@ -9,7 +9,7 @@ on:
       archive_sha256:
         description: SHA-256 of the reviewed public-release.zip
         required: true
-        default: 4c8790bc2713021421695cd79d9717f8b77fab6355fb3673c5aff0d30d5614d0
+        default: fce31821b17f91b963539189a607c6a4486aedd3f76c416ed10700fb7be047ae
         type: string
 
 permissions:
@@ -49,7 +49,7 @@ jobs:
       - name: Validate and unpack public files
         if: steps.archive.outputs.present == 'true'
         env:
-          EXPECTED_SHA: ${{ inputs.archive_sha256 || vars.PUBLIC_RELEASE_SHA256 || '4c8790bc2713021421695cd79d9717f8b77fab6355fb3673c5aff0d30d5614d0' }}
+          EXPECTED_SHA: ${{ inputs.archive_sha256 || vars.PUBLIC_RELEASE_SHA256 || 'fce31821b17f91b963539189a607c6a4486aedd3f76c416ed10700fb7be047ae' }}
         shell: bash
         run: |
           python3 - <<'PY'
