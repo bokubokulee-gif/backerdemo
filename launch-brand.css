@@ -1,0 +1,91 @@
+/* Product adapter for the shared Backer brand kit. Keep the kit reusable. */
+:root{
+  --panel:var(--bg-2);--surface:#151518;--dim:#96938c;
+  --copper:var(--accent);--green:var(--pos);--red:var(--neg);
+}
+html{background:#000;color-scheme:dark}
+body{background:#000;font-family:var(--sans)}
+::selection{background:#e9bd8640;color:#fff}
+#bg{position:fixed;inset:0;width:100%;height:100%;z-index:0;opacity:.48;pointer-events:none}
+body:has(#workspace:not([hidden])) #bg{opacity:.22}
+.backer-vignette{position:fixed;inset:0;z-index:1;pointer-events:none;background:radial-gradient(140% 100% at 50% 32%,transparent 44%,rgba(0,0,0,.5) 78%,#000 100%),linear-gradient(180deg,transparent 64%,#000 96%)}
+.masthead,#main{position:relative;z-index:2}
+.masthead{background:#000b;backdrop-filter:blur(18px);border-color:rgba(255,255,255,.09)}
+.wordmark{gap:12px}
+.wordmark>img{width:32px;height:32px;scale:1.45;object-fit:contain;filter:none!important}
+.wordmark>span{font-family:var(--sans);font-size:27px;letter-spacing:-.02em;font-weight:600}
+.wordmark small{font-weight:400}
+.workspace-name{gap:0}
+.bluefocus-logo{width:105px;height:auto;object-fit:contain;opacity:.9}
+.welcome h1{font-weight:500;letter-spacing:-.055em}
+.welcome h1 span,.comparison-head span,.method-body h2 span{background:var(--grad);background-clip:text;-webkit-background-clip:text;color:transparent}
+.tiny-marker,.model-dot{background:#f4ab63;box-shadow:0 0 14px #f4ab6360}
+.composer{background:rgba(10,10,12,.94);border-color:rgba(255,255,255,.17);border-radius:18px;box-shadow:0 18px 70px #0007;transition:border-color .25s,box-shadow .25s}
+.composer:focus-within{border-color:#e9bd866b;box-shadow:0 0 0 1px #e9bd8614,0 10px 50px #e3713f0b}
+.composer textarea{font-weight:400}
+textarea::placeholder,input::placeholder{color:#92908b}
+.composer-footer{border-color:#ffffff0b}
+.primary{background:var(--grad);border:1px solid #e9bd86;color:#17100a;border-radius:10px;box-shadow:inset 0 1px #fff5}
+.primary:hover{background:var(--grad);filter:brightness(1.1);box-shadow:0 0 25px #e3713f30,inset 0 1px #fff5}
+.secondary,.icon-button{border-color:#ffffff26;border-radius:8px}
+.secondary:hover,.icon-button:hover{border-color:#e9bd8680;background:#ffffff07;box-shadow:0 0 18px #e9bd8610}
+.case{background:rgba(12,12,15,.93);border-color:#ffffff17;border-radius:18px;transition:transform .3s cubic-bezier(.22,.61,.36,1),background .3s,border-color .3s}
+.case:hover{background:rgba(18,18,21,.98);border-color:#e9bd8638;transform:translateY(-3px)}
+.case h2{font-weight:500;letter-spacing:-.025em}
+.case-foot,.welcome-foot{border-color:#ffffff14}
+.mini-poster{background:#f2c28d;color:#161a16}
+.mini-poster i{background:#204b39}
+.mini-social{background:#16583c;color:#e9f8d8}
+.mini-terminal{border-color:#ffffff21}
+.mini-terminal i{color:#56d39a}
+.mini-journey>span{border-color:#e9bd8666}
+.brief-rail{background:#070709e8;border-color:#ffffff12}
+.user-prompt{background:#111114;border-color:#ffffff19;border-radius:12px}
+.assistant-mark{flex:none;width:25px;height:30px;display:flex;align-items:center}
+.assistant-mark img{width:25px;height:25px;object-fit:contain;scale:1.4}
+.scenario-form input:not([type=checkbox]),.scenario-form select,.post-edit input,.post-edit select,.assumption-controls input,.followup textarea,.creator-body form>input{background:#101013;border-color:#ffffff20;border-radius:8px}
+.scenario-form input:focus-visible,.scenario-form select:focus-visible,.post-edit input:focus-visible,.post-edit select:focus-visible,.assumption-controls input:focus-visible,.followup textarea:focus-visible,.creator-body form>input:focus-visible{outline:1px solid #e9bd86;outline-offset:2px;box-shadow:0 0 20px #e9bd8617}
+.post-card{background:#0c0c0f;border-color:#ffffff1b;border-radius:18px;overflow:hidden}
+.post-card:hover{border-color:#e9bd8655;box-shadow:0 10px 35px #0007}
+.post-card .avatar,.creator-result .avatar{background:#e9bd8619;color:#e9bd86}
+.post-card .post-card-foot{border-color:#ffffff13}
+.creative.x-post{background:#17171b}
+.chart-panel{border-color:#ffffff20}
+.chart-panel svg>path{stroke:#ffffff1a}
+.chart-panel svg>polygon{fill:#f4ab63}
+.chart-panel svg>polyline{stroke:#f4ab63}
+.chart-panel svg>circle{fill:#ffe7c0}
+.chart-legend span:last-child i{background:#e9bd8633}
+.compare-option{background:#0c0c0f;border-color:#ffffff20;border-radius:18px}
+.compare-option.selected{border-color:#e9bd8680;background:linear-gradient(140deg,#e9bd860a,transparent 65%),#0c0c0f}
+.compare-kpi b{color:#f4ab63}
+.attachment,.selected-creator{border-color:#e9bd8640;border-radius:8px;background:#e9bd8607}
+dialog{background:#08080a;border-color:#ffffff25;border-radius:18px;box-shadow:0 35px 130px #000c}
+dialog::backdrop{background:#000c;backdrop-filter:blur(8px)}
+.dialog-top{background:#08080a}
+.post-preview{background:#0d0d10}
+.beat-list li,.reaction{border-color:#ffffff15}
+.shot-caption{background:#08080af5}
+.toast{background:var(--grad);color:#17100a;border-radius:10px}
+.has-card-glow>.backer-card-glow-layer{--card-glow-width:1.5px;--card-glow-spread:75}
+.navlink{font-size:13px}
+.canvas-heading p,.section-head p,.post-card .post-copy>p,.assistant-note p{font-size:12px}
+.canvas-tabs button{font-size:12px}
+.overview-number small,.detail-metrics small,.model-strip,.chart-labels,.chart-legend,.post-card .post-card-foot{font-size:10px}
+.scenario-form label,.post-edit label,.assumption-controls label,.platform-field legend,.platform-field label,.followup label{font-size:11px}
+.scenario-form input:not([type=checkbox]),.scenario-form select,.post-edit input,.post-edit select,.assumption-controls input,.followup textarea{font-size:12px}
+.case-foot,.cases-head small,.rail-foot,.rail-foot button{font-size:10px}
+.post-card .post-author small,.post-card-stats span{font-size:10px}
+.detail-sub,.beat-list li,.reaction>span,.reaction>p,.small-note,.post-preview>.caption{font-size:12px}
+.detail-metrics span,.beat-list time,.beat-button span{font-size:10px}
+.beat-button,.beat-list b{font-size:12px}
+@media(max-width:680px){
+ .wordmark>span{font-size:25px}.wordmark>img{width:28px;height:28px}.wordmark{gap:10px}
+ .composer,.case{border-radius:16px}.welcome h1{letter-spacing:-.055em}
+ .detail-dialog{border-radius:0}.case:hover{transform:none}
+ .model-strip,.case-foot,.cases-head small{font-size:9px}
+}
+@media(prefers-reduced-motion:reduce){#bg{display:none}.case:hover{transform:none}}
+@media(max-width:370px){.composer textarea{min-height:178px}}
+
+.privacy-note{font-size:11px;color:var(--text-secondary,#A6A39C);line-height:1.5;margin:10px 0 0}.creative.shot-1 .object-bottle{transform:rotate(-8deg)}.creative.shot-2 .design-assets{transform:translateY(-6px)}

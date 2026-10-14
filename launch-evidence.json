@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "researchDate": "2026-10-14",
+  "creator": {
+    "name": "Roberto P. Nickson",
+    "handle": "rpn",
+    "platform": "Instagram",
+    "profileUrl": "https://www.instagram.com/rpn/reels/",
+    "identityStatus": "Public profile and original post inspected",
+    "followers": null
+  },
+  "post": {
+    "id": "DeWXikCMDBz",
+    "url": "https://www.instagram.com/reels/DeWXikCMDBz/",
+    "product": "Manus 2.0",
+    "format": "Reel",
+    "taggedAccount": "manus",
+    "publishedAt": null,
+    "captionSummary": "Introduces Manus 2.0 through game development and video editing. Describes a single prompt producing a polished video, and Alchemy mode coordinating creative direction, scripting, storyboards and edits to music. Offers 1,000 free credits to people commenting the product name.",
+    "callToAction": {
+      "action": "comment keyword",
+      "keyword": "Manus",
+      "incentive": "1,000 free Manus 2.0 credits"
+    },
+    "sponsoredStatus": null
+  },
+  "observedMetrics": {
+    "views": null,
+    "likes": 2278,
+    "comments": 643,
+    "reposts": 51,
+    "shares": null,
+    "saves": null,
+    "clicks": null,
+    "conversions": null,
+    "impressions": null,
+    "reach": null,
+    "spend": null,
+    "CPM": null,
+    "conversionRate": null
+  }
+}
