@@ -1,0 +1,13 @@
+{
+  "pdfjs-dist": {
+    "version": "6.4.299",
+    "source": "https://github.com/mozilla/pdf.js",
+    "license": "Apache-2.0",
+    "build": "legacy ES module + worker for browser compatibility"
+  },
+  "fflate": {
+    "version": "0.8.3",
+    "source": "https://github.com/101arrowz/fflate",
+    "license": "MIT"
+  }
+}

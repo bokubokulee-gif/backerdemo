@@ -1,0 +1,33 @@
+/* Source: live public pitch styles.css, retrieved 2026-10-14.
+   Pure-black product default is an explicit user-requested override. */
+:root{
+  --bg:#08080a;
+  --bg-2:#0d0d10;
+  --ink:#f5f3ee;
+  --muted:#a6a39c;
+  --muted-2:#6d6a64;
+  --line:rgba(255,255,255,.09);
+  --line-2:rgba(255,255,255,.06);
+  --card:rgba(255,255,255,.035);
+  --card-2:rgba(255,255,255,.055);
+  --card-hi:rgba(255,255,255,.08);
+  --pos:#56d39a;
+  --pos-dim:rgba(86,211,154,.16);
+  --warn:#f3b44e;
+  --neg:#ff6f6b;
+  --accent:#e9bd86;
+  --grad:linear-gradient(100deg,#ffe7c0,#f4ab63 42%,#e3713f);
+  --r-sm:12px;
+  --r:18px;
+  --r-lg:26px;
+  --maxw:1140px;
+  --ease:cubic-bezier(.22,.61,.36,1);
+  --bd-top-clearance:95px;
+  --sans:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+  --serif:"Instrument Serif",Georgia,"Times New Roman",serif;
+  --mono:"JetBrains Mono",ui-monospace,"SF Mono",Menlo,monospace;
+  --bg-pitch:#08080a;
+  --bg:#000000;
+  --accent-bright:#f4ab63;
+  --accent-deep:#e3713f;
+}
