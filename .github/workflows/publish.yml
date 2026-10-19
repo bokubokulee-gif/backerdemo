@@ -9,7 +9,7 @@ on:
       archive_sha256:
         description: SHA-256 of the reviewed public-release.zip
         required: true
-        default: fce31821b17f91b963539189a607c6a4486aedd3f76c416ed10700fb7be047ae
+        default: ff5f622539d3ab1af7e8d31150b0863d56d1e7e9ba2810b9082096209d2cc69b
         type: string
 
 permissions:
@@ -49,7 +49,7 @@ jobs:
       - name: Validate and unpack public files
         if: steps.archive.outputs.present == 'true'
         env:
-          EXPECTED_SHA: ${{ inputs.archive_sha256 || vars.PUBLIC_RELEASE_SHA256 || 'fce31821b17f91b963539189a607c6a4486aedd3f76c416ed10700fb7be047ae' }}
+          EXPECTED_SHA: ${{ inputs.archive_sha256 || vars.PUBLIC_RELEASE_SHA256 || 'ff5f622539d3ab1af7e8d31150b0863d56d1e7e9ba2810b9082096209d2cc69b' }}
         shell: bash
         run: |
           python3 - <<'PY'
@@ -65,7 +65,7 @@ jobs:
           root_files = {'.nojekyll', 'index.html', 'bluefocus.html', 'launch.mjs',
                         'launch.css', 'launch-brand.css', 'launch-evidence.json',
                         'launch-config.mjs', 'api-client.mjs', 'extract-brief.mjs'}
-          roots = {'assets', 'brand', 'vendor'}
+          roots = {'assets', 'brand', 'vendor', 'backerxbluefocus-comm'}
           suffixes = {'.html', '.css', '.js', '.mjs', '.json', '.svg', '.png', '.jpg',
                       '.jpeg', '.webp', '.ico', '.woff', '.woff2', '.ttf', '.txt',
                       '.wasm', '.bcmap', '.pfb'}
