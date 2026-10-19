@@ -1,0 +1,653 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><meta name="referrer" content="no-referrer"><title>Backer × 蓝色光标｜业务讨论与协作</title><style>*{box-sizing:border-box}html{scroll-padding-top:120px}body{margin:0;background:#edf2f8;color:#172539;font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;--size:22px}a{color:#1664cf;text-underline-offset:4px}button,a,input,select{touch-action:manipulation}header{position:sticky;top:0;z-index:20;background:#172539;color:white;padding:13px 24px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}header b{font-size:12px;letter-spacing:.08em;margin-right:auto}button,select{color:inherit;background:transparent;border:1px solid #6f8098;border-radius:5px;padding:7px 11px;cursor:pointer;font:14px inherit}header a{color:white;font-size:14px;text-decoration:none}select{max-width:300px}select option{color:#172539}input{border:1px solid #b9c8d9;border-radius:5px;padding:9px 13px;width:100%;font:16px inherit}.search-wrap{position:relative;width:100%}#results{display:none;position:absolute;top:42px;left:0;right:0;max-height:60vh;overflow:auto;background:white;color:#172539;padding:12px;box-shadow:0 10px 28px #0003}#results a{display:block;color:#172539;padding:10px;border-bottom:1px solid #e2e8ef;font-size:16px}#results span{display:block;color:#627083;font-size:13px}main{max-width:1020px;margin:26px auto 80px}.page{background:#fff;padding:48px 65px;margin-bottom:28px;box-shadow:0 3px 18px #1725390b;scroll-margin-top:135px}.eyebrow{color:#1664cf;font-size:14px;letter-spacing:.06em;margin-bottom:14px;font-weight:700}h1{font-size:32px;line-height:1.45;margin:0 0 23px}p,li{font-size:var(--size);line-height:1.9;margin:0 0 20px}.cue{font-size:16px;background:#eef4fb;padding:13px 16px;margin-bottom:28px;color:#526177}.page.index p,.page.nav p,.page.evidence p{font-size:17px;line-height:1.8}.page.index table{font-size:17px}.page.qa p{font-size:21px}.page.evidence table{font-size:15px}table{width:100%;border-collapse:collapse;font-size:17px;line-height:1.65;margin:18px 0 25px}td,th{text-align:left;vertical-align:top;padding:12px;border-bottom:1px solid #d8e0e9}th{background:#172539;color:white}td:first-child{width:29%}tr:nth-child(even){background:#eef4fb}.table-wrap{overflow:auto}.page-footer{display:flex;gap:24px;margin-top:32px;padding-top:17px;border-top:1px solid #d8e0e9;font-size:14px}.source-note{font-size:14px!important;color:#627083}.part-label{padding:8px;border-left:3px solid #1664cf}#position{font-size:12px;white-space:nowrap}@media(max-width:700px){header{padding:10px;gap:10px}header b{display:none}select{max-width:190px}main{margin:14px}.page{padding:28px 24px}h1{font-size:27px}body{--size:19px}td,th{padding:9px}table{font-size:15px}.page.index table{font-size:15px}.page-footer{gap:13px;flex-wrap:wrap}}@media print{header,.page-footer{display:none}main{margin:0}.page{box-shadow:none;break-after:page;padding:15px}.page:target{outline:none}}
+.reader-sources summary{cursor:pointer;font-weight:600}.reader-sources p,.reader-sources li{font-size:14px!important;line-height:1.8!important}.reader-sources[open] summary{margin-bottom:12px}.reader-body b{font-weight:650}.reader-body .variant{font-weight:650}.reader-body a{overflow-wrap:anywhere}footer.site-footer{max-width:1020px;margin:0 auto 40px;padding:0 22px;color:#627083;font-size:12px;line-height:1.8}@media print{.site-footer{display:none}}</style><style id="backer-annotation-style">.annotation-tools{display:flex;align-items:center;gap:9px;flex-wrap:wrap;width:100%;border-top:1px solid #ffffff26;padding-top:11px}
+.annotation-tools .annotation-label{font-size:13px;color:#c3d0e2}
+.annotation-tools button,.annotation-popover button,.annotation-note button{font-family:inherit;font-size:13px;line-height:1.3}
+.annotation-tools button{padding:7px 10px;border-color:#8fa1b9;white-space:nowrap}
+.annotation-tools button:hover,.annotation-tools button[aria-pressed="true"]{background:#ffffff20;border-color:white}
+.annotation-palette{display:flex;align-items:center;gap:7px}
+button.annotation-color{width:28px;height:28px;min-width:28px;padding:0;border:2px solid transparent;border-radius:50%;background:var(--annotation-color);box-shadow:inset 0 0 0 1px #17253918;color:#172539}
+button.annotation-color:hover,button.annotation-color[aria-pressed="true"]{border-color:#172539;outline:2px solid white;outline-offset:1px;background:var(--annotation-color)}
+.annotation-status{font-size:12px;color:#d3deed;margin-left:auto;max-width:100%;line-height:1.5}
+.annotation-tools button:disabled{opacity:.4;cursor:default}
+.annotation-popover{position:fixed;z-index:1000;display:flex;align-items:center;gap:10px;padding:10px 12px;background:#172539;color:white;border:1px solid #53657c;border-radius:10px;box-shadow:0 8px 30px #17253940;max-width:calc(100vw - 16px)}
+.annotation-popover[hidden]{display:none!important}
+.annotation-popover .annotation-palette{gap:8px}
+.annotation-popover button:not(.annotation-color){padding:6px 8px;border-color:#8fa1b9;white-space:nowrap}
+.annotation-popover .annotation-popup-label{font-size:12px;white-space:nowrap;color:#d3deed}
+.page{position:relative}
+.annotation-layer{position:absolute;inset:0;pointer-events:none;z-index:10}
+.annotation-note{position:absolute;pointer-events:auto;background:var(--note-color,#fff0a8);border:1px solid #17253930;border-radius:9px;box-shadow:0 5px 18px #17253920;color:#172539;min-width:160px;min-height:104px;display:flex;flex-direction:column;overflow:hidden}
+.annotation-note:focus-within{outline:2px solid #1664cf;outline-offset:2px;z-index:30}
+.annotation-note-head{display:flex;align-items:center;gap:5px;padding:7px 9px;border-bottom:1px solid #17253918;cursor:grab;touch-action:none;user-select:none;flex-shrink:0}
+.annotation-note-head:active{cursor:grabbing}
+.annotation-note-handle{font-size:12px;font-weight:600;flex:1;outline-offset:2px}
+.annotation-note button{background:transparent;color:#172539;border:0;border-radius:4px;padding:3px 6px;cursor:pointer}
+.annotation-note button:hover{background:#ffffff80}
+.annotation-note-color{width:21px;height:21px;box-shadow:inset 0 0 0 1px #17253960;border-radius:50%!important}
+.annotation-note textarea{display:block;flex:1;min-height:45px;width:100%;border:0;outline:none;resize:none;padding:10px 12px 17px;background:transparent;color:#172539;font:15px/1.65 -apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;border-radius:0}
+.annotation-note textarea::placeholder{color:#526177}
+.annotation-note-resize{position:absolute;right:0;bottom:0;width:22px;height:22px;padding:0!important;cursor:nwse-resize!important;touch-action:none;background:linear-gradient(135deg,transparent 60%,#17253940 61%,#17253940 67%,transparent 68%,transparent 78%,#17253940 79%,#17253940 85%,transparent 86%)!important;border-radius:0!important}
+mark.annotation-highlight{color:inherit;background:var(--highlight-color,#fff0a8);border-radius:2px;box-decoration-break:clone;-webkit-box-decoration-break:clone;cursor:pointer;padding:0}
+body.annotation-placing .page,body.annotation-placing .page *{cursor:crosshair!important}
+body.annotation-hidden mark.annotation-highlight{background:transparent!important;cursor:inherit}
+body.annotation-hidden .annotation-layer{display:none}
+.annotation-notice{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#172539;color:white;padding:12px 18px;border-radius:9px;z-index:1100;font-size:14px;line-height:1.5;max-width:calc(100vw - 24px);box-shadow:0 6px 24px #17253935;pointer-events:none}
+.annotation-notice[hidden]{display:none}
+@media(max-width:700px){.annotation-tools{gap:8px}.annotation-tools .annotation-label{display:none}.annotation-tools button{font-size:12px;padding:7px 8px}.annotation-status{margin-left:0;width:100%}.annotation-popover{gap:8px;padding:9px}.annotation-popover .annotation-popup-label{display:none}.annotation-note textarea{font-size:16px}.annotation-note{min-width:160px}}
+@media print{.annotation-tools,.annotation-popover,.annotation-notice{display:none!important}.annotation-note{box-shadow:none;break-inside:avoid}.annotation-note-head button,.annotation-note-resize{display:none!important}mark.annotation-highlight,.annotation-note{print-color-adjust:exact;-webkit-print-color-adjust:exact}}
+</style><style id="backer-comm-style">.comm-bar{display:flex;align-items:center;gap:9px;flex-wrap:wrap;width:100%;padding-top:10px;border-top:1px solid #ffffff26;font-size:13px}
+.comm-bar button{font:13px/1.35 inherit;padding:7px 11px;white-space:nowrap}
+.comm-bar button.primary{background:#fff;color:#173153;border-color:#fff}
+.comm-bar input{width:130px;padding:7px 9px;font-size:13px;background:#26374e;color:white;border-color:#657992}
+.comm-bar input::placeholder{color:#c9d4e3}
+.comm-status{margin-left:auto;color:#d9e7fa;font-size:12px;max-width:100%}
+.comm-status[data-state="error"]{color:#ffd3bc}
+.comm-status[data-state="saved"]{color:#bceccf}
+.comm-label{font-size:12px;color:#d9e7fa}
+.page .reader-body{outline:0;position:relative}
+body.comm-editing .reader-body{outline:2px solid #77a9ed;outline-offset:12px;border-radius:3px;min-height:100px}
+body.comm-editing .reader-body:focus{outline-color:#1664cf;background:#f8fbff}
+.page-edit-hint{display:none;font-size:12px;color:#1664cf;position:absolute;right:28px;top:20px;pointer-events:none}
+body.comm-editing .page-edit-hint{display:block}
+.reader-detail{margin:25px 0;padding:16px 20px;background:#f4f7fb;border-left:3px solid #b7cce9;border-radius:3px;font-size:16px}
+.reader-detail summary{cursor:pointer;font-size:15px;font-weight:600;color:#3c5778}
+.reader-detail p,.reader-detail li{font-size:17px!important;line-height:1.8!important}
+.reader-detail[open] summary{margin-bottom:16px}
+.reader-detail table{font-size:15px}
+.reader-sources{font-size:13px;color:#627083;margin-top:22px;line-height:1.8}
+.reader-sources a{margin-right:16px;overflow-wrap:anywhere}
+.reader-retained{border-left:3px solid #d6b24e;padding-left:18px;margin:20px 0}
+.reader-retained-label{font-size:12px;color:#8b702b;margin-bottom:12px}
+.comm-dialog{border:1px solid #c7d4e2;border-radius:12px;padding:27px;color:#172539;background:#fff;width:min(860px,calc(100vw - 30px));max-height:85vh;box-shadow:0 20px 70px #10213940;overflow:auto}
+.comm-dialog::backdrop{background:#17253970}
+.comm-dialog h2{font-size:23px;margin:0 0 14px}.comm-dialog p{font-size:15px;line-height:1.7;margin:0 0 14px}
+.comm-dialog button{color:#173153;border:1px solid #b0c2d7;font:14px/1.4 inherit;margin:5px 7px 5px 0;padding:8px 12px;cursor:pointer;background:#f4f7fb}
+.comm-dialog button.primary{background:#1664cf;color:white;border-color:#1664cf}
+.comm-dialog textarea{width:100%;min-height:150px;resize:vertical;font:14px/1.7 inherit;border:1px solid #bdcbde;padding:12px;border-radius:6px;margin-bottom:14px}
+.comm-history-item{border-top:1px solid #dce4ee;padding:15px 0}.comm-history-item small{font-size:12px;color:#627083}.comm-history-item pre{white-space:pre-wrap;font:13px/1.6 inherit;max-height:200px;overflow:auto}
+.comm-toast{position:fixed;bottom:25px;left:50%;transform:translateX(-50%);max-width:calc(100vw - 28px);padding:12px 18px;background:#173153;color:white;font-size:14px;border-radius:9px;box-shadow:0 5px 20px #17253930;z-index:2000;pointer-events:none}
+.comm-toast[hidden]{display:none}
+body.comm-editing .annotation-layer{opacity:.75}
+@media(max-width:700px){.comm-bar{gap:7px}.comm-bar input{width:105px}.comm-status{margin-left:0;width:100%}.comm-label{display:none}.comm-bar button{font-size:12px}.page-edit-hint{right:18px;top:12px}.reader-detail{padding:13px}.comm-dialog{padding:20px}}
+@media print{.comm-bar,.comm-dialog,.comm-toast,.page-edit-hint{display:none!important}.reader-body{outline:0!important}.reader-detail{break-inside:avoid}}
+</style></head><body><header><b>BACKER × BLUEFOCUS</b><a href="#p1">目录</a><a href="#p2">找话题</a><a href="#p4">开场</a><a href="#p14">总结</a><button id="prev">上一页</button><select aria-label="跳转页面"><option value="1">01 · 目录与讲述顺序</option><option value="2">02 · 业务话题｜从客户项目讲到集团经营</option><option value="3">03 · 落地话题｜产品接在哪里，下一步怎么做</option><option value="4">04 · 90 秒 Elevator Pitch</option><option value="5">05 · 把经营优化落到接单、采购和交付</option><option value="6">06 · 多拿 120 万返点，值得多压一亿元吗？</option><option value="7">07 · 下一次游戏版更，预算应该买什么增长？</option><option value="8">08 · 业绩会前，先把第二轮追问演出来</option><option value="9">09 · 招 AI Builder：谁能把项目交出来？</option><option value="10">10 · 模拟已经在哪些企业决策里用起来？</option><option value="11">11 · 接在蓝标的哪一步？拿三套客户方案来说</option><option value="12">12 · 第一次驻场，具体交付什么？</option><option value="13">13 · 下一次业务会，就带一个待定项目来</option><option value="14">14 · 为什么值得蓝标继续往下做？</option><option value="15">15 · 从客户项目，自然展开到集团和用人</option><option value="16">16 · 下一步，请对接一位有项目的负责人</option><option value="17">17 · E01｜收入、毛利与利润增长</option><option value="18">18 · E02｜采购条件、营运资金与战略含义</option><option value="19">19 · E03｜公开客户项目：汽车、硬件与消费</option><option value="20">20 · E04｜公开客户项目：电商、游戏与企业品牌</option><option value="21">21 · E05｜已进入企业流程的模拟案例</option><option value="22">22 · E06｜EY、代理商合作与资本市场用途</option><option value="23">23 · E07｜Simile 研究与两期访谈，应该怎样引用</option><option value="24">24 · E08｜集团经营：六类决定的实施清单</option><option value="25">25 · E09｜产品怎么用：从一份 brief 到一次决定</option><option value="26">26 · E10｜首轮试点：六周交付什么，谁来负责</option><option value="27">27 · E11｜招聘模块：把面试证据接到六个月结果</option><option value="28">28 · E12｜人才概率：怎样估计，怎样给业务看</option><option value="29">29 · 经营算例：把返点条件换成可执行的阈值</option><option value="30">30 · 私有部署与FDE：接入、交付和持续使用</option></select><button id="next">下一页</button><span id="position">1 / 30</span><button id="small">A−</button><button id="big">A＋</button><div class="search-wrap"><input id="search" aria-label="搜索业务话题" placeholder="搜索：返点 / 游戏版更 / 招聘 / BlueAI / 六周…"><div id="results"></div></div></header><main><section class="page nav" id="p1" data-page="1"><div class="eyebrow">01 / 30　导航｜开场、业务细节与落地安排</div><h1>目录与讲述顺序</h1><div class="reader-body"><div class="table-wrap"><table><tr><th>部分</th><th>内容</th><th>页码</th></tr><tr><td><b>A · Elevator Pitch</b></td><td><b>约 90 秒：产品、技术方法与三层业务价值</b></td><td><a href="#p4">04</a></td></tr><tr><td><b>B · 业务细节</b></td><td>接单采购、客户方案、业绩沟通、招聘、产品与部署</td><td><a href="#p5">05–13</a></td></tr><tr><td><b>C · 结尾总结</b></td><td><b>收束内部经营与客户服务两条业务线</b></td><td><a href="#p14">14</a></td></tr><tr><td><b>D · 衔接与下一步</b></td><td>场景之间怎样接；下一场会找谁、带什么</td><td><a href="#p15">15–16</a></td></tr><tr><td><b>E · 数据与实施细节</b></td><td>财报、公开客户项目、研究、计算与六周工作包</td><td><a href="#p17">17–30</a></td></tr></table></div>
+<p><b>主讲顺序：</b><a href="#p4">开场 04</a> → <a href="#p7">游戏客户 07</a> → <a href="#p6">采购与现金 06</a> → <a href="#p9">招聘用人 09</a> → <a href="#p14">总结 14</a>。</p>
+<p><b>围绕业务继续展开</b></p>
+<div class="table-wrap"><table><tr><th>想讲清楚的事</th><th>页码</th><th>想讲清楚的事</th><th>页码</th></tr><tr><td>什么单值得接，采购怎样谈</td><td><a href="#p5">05</a></td><td>CVS、EY、IPG 实际怎么用</td><td><a href="#p10">10</a></td></tr><tr><td>120 万返点与一亿元预付</td><td><a href="#p6">06</a></td><td>三套方案如何接入 BlueAI/Aha</td><td><a href="#p11">11</a></td></tr><tr><td>游戏版更的拉新与召回</td><td><a href="#p7">07</a></td><td>首次驻场交付什么软件</td><td><a href="#p12">12</a></td></tr><tr><td>业绩会第二轮会被追问什么</td><td><a href="#p8">08</a></td><td>六周怎样推进和验收</td><td><a href="#p13">13</a></td></tr><tr><td>AI Builder 六个月能否交付</td><td><a href="#p9">09</a></td><td>引荐谁、下一场会带什么</td><td><a href="#p16">16</a></td></tr></table></div>
+<p>只有几分钟时，讲 <a href="#p4">开场 04</a> 与 <a href="#p14">总结 14</a>。具体问题和衔接句在 <a href="#p2">02–03</a>，所有蓝色页码均可点击。</p></div><div class="page-footer"><a href="#p1">返回目录</a><a href="#p2">业务话题</a><a href="#p3">落地安排</a><a href="#p4">90 秒开场</a><a href="#p14">结尾总结</a></div></section><section class="page index" id="p2" data-page="2"><div class="eyebrow">02 / 30　导航｜具体问题与自然衔接</div><h1>业务话题｜从客户项目讲到集团经营</h1><div class="reader-body"><div class="table-wrap"><table><tr><th>具体问题</th><th>自然接下去的一句话</th><th>详情 / 依据</th></tr><tr><td>Backer 到底模拟什么？</td><td>先把要改变的条件写清楚，再分别计算人的反应和对业务的影响。</td><td><a href="#p4">第 04 页</a> · <a href="#p11">11</a></td></tr><tr><td>687 亿元收入，经营优化从哪一笔开始？</td><td>我会先看三件事：什么单值得接，采购条件怎么谈，项目用什么方式交付。</td><td><a href="#p5">第 05 页</a> · <a href="#p17">17</a></td></tr><tr><td>多拿 120 万返点，什么时候反而不划算？</td><td>先把新增返点和每天占用的现金放到同一张时间表上。</td><td><a href="#p6">第 06 页</a> · <a href="#p29">29</a></td></tr><tr><td>下一次游戏版更，拉新还是召回？</td><td>下载便宜不一定留得下来，我们要比较人群、信息和预算的不同组合。</td><td><a href="#p7">第 07 页</a> · <a href="#p20">20</a></td></tr><tr><td>realme 等新品，拍什么之前还能多做一步？</td><td>先看用户记住的是产品能力，还是只有好玩的情节，再决定把哪套内容做大。</td><td><a href="#p7">第 07 页</a> · <a href="#p19">19</a></td></tr><tr><td>管理层回答利润增长后，还会被追问什么？</td><td>第二轮通常会回到改善能否持续，以及还要投入多少资金和人。</td><td><a href="#p8">第 08 页</a> · <a href="#p22">22</a></td></tr><tr><td>面试会讲工具，入职能不能交付？</td><td>把面试证据接到六个月工作成果，先看这个岗位还缺哪项工作测试。</td><td><a href="#p9">第 09 页</a> · <a href="#p27">27</a></td></tr><tr><td>BlueAI 和 Aha 已经很强，Backer 接在哪里？</td><td>接在三套方案已经摆上桌、但还没有签约定案的那一步。</td><td><a href="#p11">第 11 页</a> · <a href="#p25">25</a></td></tr><tr><td>除了客户服务，还能怎样帮助集团？</td><td>把客户效果、合同毛利、资金占用和交付产能放在同一次比较里。</td><td><a href="#p5">第 05 页</a> · <a href="#p24">24</a></td></tr></table></div></div><div class="page-footer"><a href="#p1">返回目录</a><a href="#p2">业务话题</a><a href="#p3">落地安排</a><a href="#p4">90 秒开场</a><a href="#p14">结尾总结</a></div></section><section class="page index" id="p3" data-page="3"><div class="eyebrow">03 / 30　导航｜方法、交付与业务对接</div><h1>落地话题｜产品接在哪里，下一步怎么做</h1><div class="reader-body"><div class="table-wrap"><table><tr><th>具体问题</th><th>自然接下去的一句话</th><th>详情 / 依据</th></tr><tr><td>海外已经有谁把模拟用在实际项目里？</td><td>CVS 用它选择上市概念，EY 用真实研究核对结果，IPG 把它接进客户创意测试。</td><td><a href="#p10">第 10 页</a> · <a href="#p21">21</a></td></tr><tr><td>报价或卖点变了，哪些结果要重新算？</td><td>报价变化重算成本；卖点变化重测理解，两种变化分别留记录。</td><td><a href="#p11">第 11 页</a> · <a href="#p25">25</a></td></tr><tr><td>经营数据不能上传外部云，怎么办？</td><td>从一个业务单元接清合同、订单和收付款，在 IT 批准的环境里处理。</td><td><a href="#p12">第 12 页</a> · <a href="#p30">30</a></td></tr><tr><td>驻场工程师第一次交付什么？</td><td>可核对的数据表、能运行的情景计算，以及还需确认的条款差异清单。</td><td><a href="#p12">第 12 页</a> · <a href="#p30">30</a></td></tr><tr><td>六周结束能拿到什么？</td><td>方案比较页、预测与实际对照、交付成本记录；长期结果按业务周期继续观察。</td><td><a href="#p13">第 13 页</a> · <a href="#p26">26</a></td></tr><tr><td>应该引荐哪位业务负责人？</td><td>客户项目找策略负责人和投放同事；采购现金找出海业务负责人和财务。</td><td><a href="#p16">第 16 页</a> · <a href="#p13">13</a></td></tr><tr><td>超预期或低于预期的百分比从哪里来？</td><td>用较晚入职批次核对六个月结果；没有校准时，先交付岗位证据和工作测试。</td><td><a href="#p9">第 09 页</a> · <a href="#p28">28</a></td></tr><tr><td>第二个项目具体复用什么？</td><td>复用数据结构、计算组件和核对工具，再记录新项目少用了多少接入人天。</td><td><a href="#p12">第 12 页</a> · <a href="#p30">30</a></td></tr><tr><td>从一个用途，怎样自然讲到另一个？</td><td>从客户预算接到蓝标自身的利润与现金，再接到项目究竟需要什么人。</td><td><a href="#p15">第 15 页</a> · <a href="#p14">14</a></td></tr></table></div></div><div class="page-footer"><a href="#p1">返回目录</a><a href="#p2">业务话题</a><a href="#p3">落地安排</a><a href="#p4">90 秒开场</a><a href="#p14">结尾总结</a></div></section><section class="page spoken" id="p4" data-page="4"><div class="eyebrow">04 / 30　A｜开场必讲 · 约 90 秒</div><h1>90 秒 Elevator Pitch</h1><div class="cue">用途：先讲清产品、三层价值与今天要讨论的合作机会。</div><div class="reader-body"><p>Backer 正在开发一套<b>企业决策模拟引擎</b>。我们把企业面临的选择转化为可计算的情景：在目标和资源约束不变的情况下，改变内容、价格、采购条件或人员配置，结果会怎样变化，什么条件下值得执行。</p>
+<p>技术上，我们把两类模型结合起来。第一类是<b>行为模型</b>：依据访谈、交易和工作记录，模拟客户、员工、投资者面对不同选择时的反应。第二类是<b>经营模型</b>：把这些反应放进收入、成本、产能和现金流的约束中，计算它们对业务的影响。大模型负责理解非结构化资料和生成行为假设，统计模型与业务规则负责估计结果、计算取舍。</p>
+<p>系统需要给出的，是不同方案的结果分布、关键假设，以及结论发生反转的条件。我们用历史数据回测，并在执行前锁定预测，再拿真实结果检验和校准。这样，企业可以逐步知道：哪些决定已经有足够依据，哪些仍需要小规模实验。</p>
+<p>对蓝标，这套方法可以贯穿三个层面。客户侧，模拟不同人群对创意、产品和价格的反应，帮助选择值得投放的方案；集团侧，比较业务组合、返点、账期和人员投入对利润与现金的共同影响；组织侧，把岗位任务与历史表现关联起来，估计不同人才在具体工作条件下达到或超过预期的可能性。投资人的提问与管理层的回应，也可以提前推演。</p>
+<p><b>我们希望沉淀的，是企业自己的决策模型。</b> 每完成一次项目，新的结果就成为下一次模拟的依据。蓝标既有集团经营中的决策需求，也有跨行业的客户项目，适合从一个可验证的场景开始，把模拟逐步发展成内部经营工具和对外服务能力。</p></div><div class="page-footer"><a href="#p1">返回目录</a><a href="#p2">业务话题</a><a href="#p3">落地安排</a><a href="#p4">90 秒开场</a><a href="#p14">结尾总结</a></div></section><section class="page spoken" id="p5" data-page="5"><div class="eyebrow">05 / 30　B1｜集团经营 · 哪些决定值得先模拟</div><h1>把经营优化落到接单、采购和交付</h1><div class="cue">先讲清楚一件事：规模增加以后，利润和现金能不能跟上。</div><div class="reader-body"><p>看蓝标的财报，我认为有三个特别值得做的决定：<b>什么单值得接，采购条件怎么谈，项目用什么方式交付。</b></p>
+<p>2025 年，蓝标收入约 687 亿元，毛利约 18.1 亿元。出海投放占收入的 82%，贡献的毛利不到一半，毛利率只有 1.56%。这么大的业务量，接单价格、返工和账期里很小的变化，累积起来都会影响集团利润。</p>
+<p>比如，同一个客户追加预算，业务负责人要比较的可以是三份报价：只增加投放；投放加内容服务；减少媒体规模，但增加策略和研究。我们把历史成交、执行工时、修改轮次、外采费用和回款放在一起，算每个选项的项目贡献，以及要占用多久的人和钱。</p>
+<p>采购也要跨项目看。蓝标前五大供应商占采购的 91%。一个项目少买某个平台，可能省了钱，却让全年采购量掉出返点档位。把合同门槛、集团采购计划和客户效果要求一起算，才知道这次调整对集团是否划算。</p>
+<p>交付端则可以比较：增加固定岗位、采购外部产能，还是投入 AI 工具。模拟里要同时计入订单淡旺季、返工率和交付延期，避免只看到单次制作便宜，却忽略后面的补救成本。</p>
+<p><b>我们建议交付给业务负责人和财务的，是一张能随订单更新的经营对比表：每条路径增加多少贡献、占用多少现金、什么条件下该换方案。</b>先落到一个业务单元，跑通后再汇总到集团预算和资源配置。</p><details class="reader-detail"><summary>可以继续展开：管理层拿到什么</summary><p>三组可执行输出：① 客户报价与最低可接受条件；② 采购组合、返点档位与现金峰值；③ 自有团队、外包和 AI 工具的产能组合。项目贡献按收入减直接采购、可归属交付、返工和研究成本计算；资金占用与资金成本单列，再由财务对应到报表口径，避免重复扣除。</p></details><details class="reader-sources"><summary>查看来源</summary><ul><li><a href="https://static.cninfo.com.cn/finalpage/2026-04-16/1225107656.PDF">蓝色光标 2025 年报</a> · 13–15</li></ul></details></div><div class="page-footer"><a href="#p1">返回目录</a><a href="#p2">业务话题</a><a href="#p3">落地安排</a><a href="#p4">90 秒开场</a><a href="#p14">结尾总结</a></div></section><section class="page spoken" id="p6" data-page="6"><div class="eyebrow">06 / 30　B2｜经营模拟 · 采购与现金</div><h1>多拿 120 万返点，值得多压一亿元吗？</h1><div class="cue">一个可以交给财务和采购共同讨论的具体问题。</div><div class="reader-body"><p>蓝标今年上半年预付款从 1.68 亿元增加到 6.42 亿元，公司给出的原因是获取更优合作条件。这里最适合先做的，就是把<b>商务收益和资金代价放在同一张时间表上</b>。</p>
+<p>用一组示意数字：多预付一亿元，换来一百二十万元返点。资金年成本按 4% 算，占用九十天，要付出约九十九万元，剩下的收益约二十一万元；如果占用一百二十天，资金成本约一百三十二万元，这笔交换就不划算了。仅看这两个因素，临界点大约在第一百一十天。</p>
+<p>真实合同会更复杂：返点什么时候确认、采购量差一点是否整档失去、客户哪天回款、供应商能给多少账期。我们准备把合同规则和逐笔应收应付接起来，按天计算现金，再按历史回款延迟和采购量波动反复推演。回款同时变慢的压力情景，也要单独跑。</p>
+<p>财务和采购就可以直接比较三种安排：保留账期、增加预付换条件、把部分采购移到另一家。每种安排都给出新增收益、现金占用峰值，以及可接受的最长回款时间。合同算术由程序执行，不确定性来自实际经营记录。</p>
+<p>最终的建议可以具体到：<b>这份条件可以谈，但预付上限是多少、返点兑现日应在何时、哪些客户的账期需要先缩短。</b>执行后，把实际返点和回款日期回填，同一套模型就能继续支持下一轮谈判。</p><details class="reader-detail"><summary>示意算式｜不是蓝标实际合同</summary><p>净收益＝新增返点－新增资金占用额×年资金成本×占用天数÷365。90 天约 +21.4 万元；120 天约 −11.5 万元；盈亏临界点约 109.5 天。正式计算还要计入返点支付时点、未达量风险、信用损失及合同其他费用，避免把利息与同一笔资金的机会成本重复扣除。</p></details><details class="reader-sources"><summary>查看来源</summary><ul><li><a href="https://static.cninfo.com.cn/finalpage/2026-08-29/1225523931.PDF">蓝色光标 2026 半年报</a> · 15</li></ul></details></div><div class="page-footer"><a href="#p1">返回目录</a><a href="#p2">业务话题</a><a href="#p3">落地安排</a><a href="#p4">90 秒开场</a><a href="#p14">结尾总结</a></div></section><section class="page spoken" id="p7" data-page="7"><div class="eyebrow">07 / 30　B3｜客户业务 · 从素材选择走到预算选择</div><h1>下一次游戏版更，预算应该买什么增长？</h1><div class="cue">用思恩客做过的《高能英雄》项目，说明下一次同类项目可以怎么做。</div><div class="reader-body"><p>客户侧，我会先找一个即将更新版本的游戏项目。游戏占蓝标今年上半年收入的约 42%；思恩客也做过《高能英雄》首次版更的人群和素材优化。这是有业务基础、而且能很快拿到结果的入口。</p>
+<p>版本上线前，客户往往有三条路：用竞技卖点拉新，用新玩法召回老玩家，或者用组队内容吸引社交玩家。预算相同，<b>下载量最高的方案，未必带来最多能留下来的玩家。</b></p>
+<p>我们的切入点，是把候选脚本放进真实玩家的使用情境：有人因为排位压力离开，有人因为朋友不玩了离开，也有人只是玩腻了。结合历史访谈、弃玩原因和版本改动，模拟他们看完内容后，会不会改变原来的判断，以及哪句话仍然解决不了顾虑。</p>
+<p>数值部分接上已有的素材、激活、回流和七日留存数据。先看历史上哪些组合下载便宜、留存却低，再把新版本值得测试的人群、信息和预算排出来。模拟负责解释玩家为什么愿意回来；回流和留存的数值，要用历史行为与实投结果检验。策略负责人拿到的是一张“人群×信息×预算”对比表。</p>
+<p>上线前保存组合排序，随后用小额真实投放比较有效激活、回流和七日留存，再决定放大哪组预算。蓝标可以把这一步包装成版本上线前的决策研究，与后续制作和投放一起交付。</p>
+<p><b>同样的做法也能用在新品上。</b>例如蓝标做过 realme 巴西传播，下一轮就可以先比较“耐用实测”和“娱乐挑战”：用户究竟记住了产品能力，还是只记住了好玩的情节，再决定拍什么、让谁来拍。</p><details class="reader-detail"><summary>给业务团队的第一份材料清单</summary><p>一个尚未上线的版本；2–3 套真实可执行的脚本和预算；已有玩家研究；按人群汇总的历史激活、回流与 D7 留存；发布后的结果回传口径。实际投放检验候选组合，模拟受众的口头意向不直接换算成下载或付费概率。</p></details><details class="reader-sources"><summary>查看来源</summary><ul><li><a href="https://static.cninfo.com.cn/finalpage/2026-08-29/1225523931.PDF">蓝色光标 2026 半年报</a> · 11</li><li><a href="https://agent.oceanengine.com/awardsDetail/17237">巨量引擎：思恩客《高能英雄》案例</a></li><li><a href="https://finance.sina.com.cn/stock/relnews/cn/2025-12-12/doc-inhaprxf7146103.shtml">蓝色光标署名项目披露：realme巴西传播</a></li></ul></details></div><div class="page-footer"><a href="#p1">返回目录</a><a href="#p2">业务话题</a><a href="#p3">落地安排</a><a href="#p4">90 秒开场</a><a href="#p14">结尾总结</a></div></section><section class="page spoken" id="p8" data-page="8"><div class="eyebrow">08 / 30　B4｜管理层沟通 · 直接用蓝标财报预演</div><h1>业绩会前，先把第二轮追问演出来</h1><div class="cue">这个入口投入轻，管理层也能很快判断有没有帮助。</div><div class="reader-body"><p>还有一个很适合先让管理层体验的场景：业绩会预演。Simile 的创始人在 Sequoia 访谈里提到，财报电话会是客户反复提出的模拟需求。我们可以直接拿蓝标的财报来说明。</p>
+<p>今年上半年归母净利润增长 119%。第一轮问题很容易想到：增长从哪里来？真正需要准备的是第二轮：信用减值、公允价值变动和业务毛利，各贡献了多少？扣掉波动因素后，什么改善可以延续到下一期？</p>
+<p>再看预付款增加。管理层回答“获取更优合作条件”之后，投资人很可能继续问：新增返点有没有覆盖资金成本？如果客户回款慢一个月，原来的安排还合算吗？这就能接回前面的采购与现金模拟。</p>
+<p>AI 业务也一样。说收入增长后，下一步要讲清楚收入的定义、交付成本和收费方式：哪些来自新增需求，哪些来自原业务转用 AI，哪些有持续付费的可能。</p>
+<p>我们建议拿历次问答、公开研究观点和授权使用的本次材料，分别模拟关注现金、盈利质量和技术转型的投资者。让他们针对同一个回答继续追问，定位哪句话容易误解、哪张表还缺、哪个数字需要财务确认。</p>
+<p><b>交给董秘和管理层的，是按议题排列的问答预演稿：首问、追问、可用证据和待补数字。</b>会前保存重点问题，会后和实际问答对照；这套做法以后也可以用于蓝标客户的企业传播、战略发布和投资者沟通。</p><details class="reader-detail"><summary>一条预演路径</summary><p>“利润为什么增长？”→“哪些改善能持续？”→“要维持这些改善，还需投入多少资金和人？”前两个问题检验解释是否完整，第三个问题把沟通准备接到实际经营计划。公开研究观点用于构建关注点，不冒充某位分析师本人的真实态度。</p></details><details class="reader-sources"><summary>查看来源</summary><ul><li><a href="https://static.cninfo.com.cn/finalpage/2026-08-29/1225523931.PDF">蓝色光标 2026 半年报</a> · 7、15、41</li><li><a href="https://sequoiacap.com/podcast/simulating-humans-at-scale-similes-joon-sung-park">Sequoia：Simulating Humans at Scale, Simile’s Joon Sung Park</a></li></ul></details></div><div class="page-footer"><a href="#p1">返回目录</a><a href="#p2">业务话题</a><a href="#p3">落地安排</a><a href="#p4">90 秒开场</a><a href="#p14">结尾总结</a></div></section><section class="page spoken" id="p9" data-page="9"><div class="eyebrow">09 / 30　B5｜招聘与用人 · 从面试表现追到工作结果</div><h1>招 AI Builder：谁能把项目交出来？</h1><div class="cue">用一个岗位、一个明确的结果窗口，把招聘模拟讲实。</div><div class="reader-body"><p>招聘可以从 AI Builder 这样的岗位开始。面试时都能讲模型和工具，业务负责人真正想知道的是：入职后，这个人能不能把一个含糊的客户需求，做成可验收、有人使用的功能。</p>
+<p>如果企业留有面试录音、飞书项目记录和绩效报告，我们建议先把同岗位历史员工串起来：面试时如何拆问题、如何处理异常；后来接了什么任务、做了哪些关键决定；六个月后交付了什么，返工多少。把项目难度、主管支持和审批等待也记下来，避免把资源差异全算到个人能力上。</p>
+<p>业务负责人先定义“超预期”。比如，在质量达标的前提下，独立完成约定复杂度的功能，交付与返工表现超过同职级要求。入职后的记录用来检验结果；预测新候选人时，只用面试和工作样本里已经拿到的证据。</p>
+<p>交付给招聘经理的，可以是“这个人适合哪类任务、哪项能力还缺证据、下一轮该测试什么”。例如统一给一个报价比较任务，故意放入矛盾指标和缺失字段，看候选人能否发现问题、补充条件并交付可用结果。</p>
+<p>后续批次验证稳定后，再给出六个月内<b>超预期、达预期、低于预期</b>的概率，并与同岗位基准比较。这个百分比要经得起后续实际表现的核对。</p>
+<p>同一套工作记录还能支持内部用人：谁适合模糊需求，谁适合稳定交付，谁需要资深同事搭档。招聘经理和项目负责人据此安排面试、组队与支持，录用决定由人作出。</p><details class="reader-detail"><summary>概率怎样才有用</summary><p>按较晚入职批次留出验证，比较模型预测与六个月真实结果；不把未录用者当作低绩效样本，不把主管分数直接等同个人能力。只有在样本和校准支持时才展示百分比，否则展示岗位证据与待补工作测试。数据范围限获授权的面试、任务与成果，不使用私人聊天、声纹或表情推断能力。</p></details><details class="reader-sources"><summary>查看来源</summary><ul><li><a href="https://www.siop.org/wp-content/uploads/2024/12/Considerations-and-Recommendations-for-the-Validation-and-Use-of-AI-Based-Assessments-for-Employee-Selection-January-2023.pdf">SIOP：AI员工甄选评估的验证与使用建议</a></li></ul></details></div><div class="page-footer"><a href="#p1">返回目录</a><a href="#p2">业务话题</a><a href="#p3">落地安排</a><a href="#p4">90 秒开场</a><a href="#p14">结尾总结</a></div></section><section class="page spoken" id="p10" data-page="10"><div class="eyebrow">10 / 30　B6｜从真实项目看落地方法</div><h1>模拟已经在哪些企业决策里用起来？</h1><div class="cue">把研究结果变成下一步能执行的选择。</div><div class="reader-body"><p>先看一个与蓝标很接近的项目。CVS 准备推出宠物处方药业务，已有四项消费者洞察，但到底用哪种表达上市，还要在六个传播概念中做选择。CVS 披露，与 Simile 合作后，多轮研究从两三个月压缩到三天。客户拿到的是进入下一轮制作和测试的短名单；三天是研究周期，不能当成销量提升。</p>
+<p>EY 与 Aaru 做了另一件关键的事：把模拟结果交给真实调查检验。参照研究覆盖三千六百名投资者、三十多个市场；Aaru 约一天完成模拟。五十三道单选题的排序相关性中位数为零点九，RMSE 为七点一个百分点。这给了我们一条明确的实施路径：先复现蓝标已经知道答案的研究，再进入尚未定案的新项目。</p>
+<p>更贴近代理商业务的是 IPG。它披露，Aaru 已用于金融、医疗和快消项目，测试平台创意与具体执行。这说明模拟可以放进代理商现有的提案与创意评审环节，由原来的客户团队带进去。</p>
+<p>对 Backer，我们会吸收这三种做法：用客户已有研究建立模拟对象；让业务人员现场换方案、追问分歧；把真人研究留给最影响决定的未知项。MiroFish 的角色互动界面值得借鉴，但客户首先要看到：哪个人群误解了什么，哪一处修改值得试。</p><details class="reader-sources"><summary>查看来源</summary><ul><li><a href="https://www.cvshealth.com/content/dam/enterprise/cvs-enterprise/pdfs/2026/CVS_WhitepaperCVSxSimile.pdf">CVS 官方白皮书，第10页：Pet Rx</a></li><li><a href="https://www.ey.com/en_pl/insights/wealth-asset-management/how-ai-simulation-accelerates-growth-in-wealth-and-asset-management">EY：财富管理行为模拟验证</a></li><li><a href="https://www.globenewswire.com/news-release/2025/08/11/3130751/0/en/interpublic-partners-with-aaru-to-leverage-ai-powered-predictive-simulations-to-accelerate-scale-and-optimize-marketing.html">IPG 官方合作公告</a></li><li><a href="https://github.com/666ghj/MiroFish">MiroFish 官方仓库</a></li></ul></details></div><div class="page-footer"><a href="#p1">返回目录</a><a href="#p2">业务话题</a><a href="#p3">落地安排</a><a href="#p4">90 秒开场</a><a href="#p14">结尾总结</a></div></section><section class="page spoken" id="p11" data-page="11"><div class="eyebrow">11 / 30　B7｜BlueAI、Aha 与 Backer 的分工</div><h1>接在蓝标的哪一步？拿三套客户方案来说</h1><div class="cue">业务已有工具，Backer 要接住尚未定案的那一步。</div><div class="reader-body"><p>比如一个出海客户，三十万元预算，桌上已有三套“达人、内容、投放”组合。名单来自不同供应商，报价也齐了。负责人真正要决定的是：签哪套，什么条件变化后应该换一套。</p>
+<p>蓝标已经有很强的基础。半年报披露，BlueAI 覆盖内容分析、策划、达人推荐、Media Plan 和投放优化；Aha 已有匹配、审稿、履约和支付能力。Backer 建议接在方案定案、采购承诺之前，直接使用这些工具和团队已经产出的候选方案。</p>
+<p>这次输入要落到三张表：各方案的达人、内容与完整费用；同平台、同发布后七天口径的历史表现与受众覆盖；客户的人群目标、期限和素材要求。对受众怎样理解内容，用客户研究建立行为模型；对费用、排期和预算约束，用代码计算；如果历史只有发布后七天的播放量，就先估计播放区间，不往成交额上推。不同内容给同一批模拟受众、按相同观察窗口配对比较。负责人拿到的表里，费用是算出来的，内容误解是模拟发现的，效果区间来自历史检验；三者分别列明。</p>
+<p>举个现场操作：把其中一位达人的报价提高两成。成本和方案排序应重新计算，受众偏好不应跟着变化。若把“省时间”改成“作品质量更好”，则重新测试表达理解，原有合同金额保持不变。</p>
+<p>普通大模型可以参与资料提取与分析。Backer 要交付的是能重复运行的比较：同样输入能查到同一版结果；每次变化能追到具体原因；上线前留下预测，上线后能对账。第一期就拿这三套方案，与现有判断并行验证。</p><details class="reader-sources"><summary>查看来源</summary><ul><li><a href="https://static.cninfo.com.cn/finalpage/2026-08-29/1225523931.PDF">蓝色光标2026半年报：BlueAI 已披露业务模块</a></li><li><a href="https://www.ahacreator.com/">AhaCreator 官方产品功能</a></li></ul></details></div><div class="page-footer"><a href="#p1">返回目录</a><a href="#p2">业务话题</a><a href="#p3">落地安排</a><a href="#p4">90 秒开场</a><a href="#p14">结尾总结</a></div></section><section class="page spoken" id="p12" data-page="12"><div class="eyebrow">12 / 30　B8｜私有部署与 FDE</div><h1>第一次驻场，具体交付什么？</h1><div class="cue">先接一个项目，交付可持续运行的软件。</div><div class="reader-body"><p>如果先做采购与账期决策，我们需要的不是把蓝标全部资料搬过来，而是接清一个业务单元的一组记录：客户合同、媒体订单、返点规则、发票、实际收付款。驻场工程师与业务、财务、IT 一起，把这些记录按客户、订单和日期对上。</p>
+<p>第一期拟交付三个东西。第一，能核对的数据表：每笔金额的币种、含税口径、账期起点、返点门槛及原始出处。第二，可运行的情景计算：改预付比例、回款日期或采购量，就重新计算资金占用、资金成本和合同毛利。第三，一份差异清单：哪些金额已经勾稽，哪些条款有歧义，哪个结果还依赖人工确认。</p>
+<p>权限也要跟着业务走。业务负责人看项目方案，财务看结算和成本，客户团队只看获授权的客户资料。运行环境、模型调用和日志都由蓝标 IT 确认；要求数据不出域，就在获批环境完成存储、检索和推理。第一次交付还包括部署脚本、回滚办法和运维交接，数据接口断了也有人知道怎样恢复。</p>
+<p>第二个同类项目，复用的是合同与订单的数据结构、规则解析、计算器、权限控制和核对工具；新增客户的合同条款、接口映射与参数。我们会分别记录两次接入用了多少工程师天数。</p>
+<p>所以 FDE 的工作可以很深入，但交付必须留下能反复用的软件。咨询团队也能提出好方案；我们要让业务人员在下个月报价和账期变化时，自己重新运行。</p></div><div class="page-footer"><a href="#p1">返回目录</a><a href="#p2">业务话题</a><a href="#p3">落地安排</a><a href="#p4">90 秒开场</a><a href="#p14">结尾总结</a></div></section><section class="page spoken" id="p13" data-page="13"><div class="eyebrow">13 / 30　B9｜拟定六周试点安排</div><h1>下一次业务会，就带一个待定项目来</h1><div class="cue">一个负责人、一个待定决定、三份可验收交付。</div><div class="reader-body"><p>我建议先找一个未来一个月准备进入制作或投放、还保留两到三套可执行方案的项目。请客户策略负责人带上 brief、候选方案和已有研究；投放或数据同事提供历史口径与后续测量条件。第一次会就确认：哪天必须定案，谁拍板，什么新信息足以改变选择。</p>
+<p>六周可以这样安排。第一周，约定一个主指标，整理备选项和资料，留下团队原本会选什么、为什么。第二到三周，选几项已经结案的同类项目，只给模型看当时定案前能拿到的资料，先留下判断，再揭开真实结果。看清哪些判断可靠以后，再运行这次的新方案。交付的是方案比较表、关键分歧和建议补测的问题，负责人能沿着结论查回原始材料。</p>
+<p>第四周，锁定预测。对影响选择最大的分歧，安排一轮真实受众测试；条件允许，就对方案随机分流。第五到六周，在限定预算下执行，并按事先约定的观察窗口回收结果。购买周期较长的项目继续观察，六周先验收研究和上线前决策，不提前宣告销售成功。</p>
+<p>这一轮留给蓝标三份东西：可继续修改的方案比较页、预测与实际的对照表、完整的交付成本记录。我们一起看是否改变了选择，减少了哪项不确定性，研究时间和费用有没有下降。</p>
+<p>如果业务机会在集团内部，就由业务负责人和财务选一组采购条款，沿同一安排做历史结算核对与小范围执行。今天只要确定一个愿意带项目进来的负责人，后续工作就能具体排起来。</p></div><div class="page-footer"><a href="#p1">返回目录</a><a href="#p2">业务话题</a><a href="#p3">落地安排</a><a href="#p4">90 秒开场</a><a href="#p14">结尾总结</a></div></section><section class="page spoken" id="p14" data-page="14"><div class="eyebrow">14 / 30　C｜结束必讲 · 约 90 秒</div><h1>为什么值得蓝标继续往下做？</h1><div class="cue">从一个项目，走向蓝标内部与客户两条业务线。</div><div class="reader-body"><p>我想把今天的讨论落在蓝标已经在做的生意上。</p>
+<p>蓝标每年替客户做大量选择：进哪个市场，讲哪个卖点，用哪种内容，预算怎样分。我们建议把它放在客户定案之前，做成一项决策研究：比较两到三套可执行方案，交付分人群的选择差异、需要修改的内容，以及下一轮测试安排。它可以与制作和投放一起报价，收费是否成立，就看客户是否愿意为这份交付购买下一次研究。</p>
+<p>同样的比较也能回到集团。出海业务收入大、毛利薄，返点条件、资金占用和回款速度稍有变化，就可能改变一笔业务是否值得做。我们可以把候选合同与执行方案放进模型，让经营团队看到收入增长之后，利润和现金分别留下多少。</p>
+<p>人也是长期投入。面试记录和工作成果如果能按岗位接起来，主管就有机会知道：哪些证据真正对应交付能力，这次招人还缺哪项验证，换一种任务安排可能带来什么差异。业绩沟通则可以先做一次短周期演练，让管理层直接感受模拟如何发现遗漏和追问。</p>
+<p>这些方向不用同时启动。我们希望先与一位业务负责人，把一个真实选择做完：定方案、留下预测、拿回结果。再把已经接好的数据和计算模块带到下一个同类项目，看交付是否更快，使用是否继续。</p>
+<p><b>对蓝标，这是两条可以一起打开的路：集团自己把重要决定做得更细，客户团队多一项能交付、能复购的服务。</b>下一步我们最希望的是一次带项目的业务对接，把这条路从具体问题开始走通。</p><details class="reader-sources"><summary>查看来源</summary><ul><li><a href="https://static.cninfo.com.cn/finalpage/2026-04-16/1225107656.PDF">蓝色光标2025年报：出海收入、毛利与经营结构</a></li></ul></details></div><div class="page-footer"><a href="#p1">返回目录</a><a href="#p2">业务话题</a><a href="#p3">落地安排</a><a href="#p4">90 秒开场</a><a href="#p14">结尾总结</a></div></section><section class="page qa" id="p15" data-page="15"><div class="eyebrow">15 / 30　D1｜现场可直接使用的衔接</div><h1>从客户项目，自然展开到集团和用人</h1><div class="cue">根据正在聊的话题，选择其中一段。</div><div class="reader-body"><p><b>从客户方案接到集团经营。</b></p>
+<p>刚才算的是客户这笔预算怎样花。如果把同一笔业务从蓝标自己的账上再看一遍，还会出现另一组问题：为了拿返点，提前付出的现金要占多久？客户晚回款一个月，原来这单利润还能剩多少？所以我们也想把客户方案与蓝标的合同、采购和结算连起来，让客户效果和集团收益在同一次决策里被看见。<a href="#p6">继续讲经营算例 → 06</a></p>
+<p><b>从项目预算接到招聘和组队。</b></p>
+<p>还有一项成本在签合同时不一定看得见，就是项目要用什么人。一个团队能不能按期交付，往往取决于谁能独立把需求拆清、谁需要多少支持。面试记录与实际项目结果接起来以后，我们就可以回头检验当初的判断，再为下一次招人或组队提供依据。先把一个岗位做清楚，就能知道这类模型有没有用。<a href="#p9">继续讲岗位预测 → 09</a></p>
+<p><b>对方希望先体验一个轻一点的用途。</b></p>
+<p>可以先拿一次业绩说明会来做。我们用拟披露材料和历史问答，模拟不同投资人的连续追问。比如收入增长以后，对方接着问利润，再问现金，最后问 AI 收入的质量。团队就能看到哪段解释还站不住，先补什么数字。<a href="#p8">继续讲业绩沟通 → 08</a></p>
+<p><b>对方问几条线怎样收在一起。</b></p>
+<p>我们先选一个决定做完，再看什么可以带走。客户项目留下受众与内容反应模型，经营项目留下合同和资金计算，岗位项目留下任务与表现的对应关系。每扩一条线，都有明确新增的数据和模型，也有一个具体的业务负责人来验收。<a href="#p14">进入总结 → 14</a></p></div><div class="page-footer"><a href="#p1">返回目录</a><a href="#p2">业务话题</a><a href="#p3">落地安排</a><a href="#p4">90 秒开场</a><a href="#p14">结尾总结</a></div></section><section class="page qa" id="p16" data-page="16"><div class="eyebrow">16 / 30　D2｜推进合作 · 可直接说</div><h1>下一步，请对接一位有项目的负责人</h1><div class="cue">让对方知道引荐谁，以及下一次会准备什么。</div><div class="reader-body"><p>如果今天只能往前推进一件事，我希望是找一位手上有待定项目的负责人。我们可以从客户业务切入，也可以先解决集团内部一个经营问题。</p>
+<p>客户侧，适合对接策略或客户负责人，再请一位投放或研究同事参加。带一个还没定案的 brief、两到三套方案、已有研究和预算就够了。下一次会，我们直接讨论哪些选择能模拟、什么资料已经够用、哪项结果会改变团队的决定，不需要先采购一套大系统。</p>
+<p>集团侧，适合对接出海业务负责人和财务业务伙伴。可以先拿一组采购报价、返点条款和实际收付款记录，看模型能否把“更多收入”拆成“多少毛利、占用多少现金、承担什么风险”。如果对方更关心人才，就请用人主管与 HR 先选一个岗位，确认历史录用和工作结果能否对应。</p>
+<p>所以，我们建议下一次就请一位业务负责人带项目来。先拿客户方案或采购条款做一轮，把结果交给业务和财务共同看。第一项做实以后，内部继续使用是一条线，随客户项目对外收费是另一条线，集团就有具体依据决定往哪边扩大。</p>
+<p>我们会把第一项合作的范围、资料清单、交付和验收写成一页纸。业务负责人确认以后，就按周推进。试点结束时，业务能评估是否帮助了选择，财务能核对投入与结果，您也有一份具体材料继续向集团介绍。<a href="#p13">六周工作安排 → 13</a></p></div><div class="page-footer"><a href="#p1">返回目录</a><a href="#p2">业务话题</a><a href="#p3">落地安排</a><a href="#p4">90 秒开场</a><a href="#p14">结尾总结</a></div></section><section class="page evidence" id="p17" data-page="17"><div class="eyebrow">17 / 30　E｜证据备查 · 按需查阅</div><h1>E01｜收入、毛利与利润增长</h1><div class="reader-body"><p>核查日：2026-10-19。金额为人民币亿元，另有说明除外。2025 年报为审计报告；2026 半年报未经审计。应用方案为本报告提出的合作方向。</p>
+<div class="table-wrap"><table><tr><th>财务项目</th><th>2024 全年</th><th>2025 全年</th><th>2026 上半年</th></tr><tr><td>营业收入</td><td>607.9692</td><td>686.9267</td><td>345.6169</td></tr><tr><td>毛利：收入减成本</td><td>15.5481</td><td>18.0907</td><td>10.1233</td></tr><tr><td>毛利率：计算值</td><td>2.5574%</td><td>2.6336%</td><td>2.9290%</td></tr><tr><td>归母净利润</td><td>-2.9068</td><td>2.2467</td><td>2.1148</td></tr><tr><td>扣非归母净利润</td><td>-3.3103</td><td>2.7173</td><td>1.9268</td></tr><tr><td>经营现金流净额</td><td>0.8967</td><td>6.3157</td><td>-0.5637</td></tr></table></div>
+<p>2026H1 收入同比 +6.80%，归母净利润 +119.28%，扣非归母 +48.05%。半年与全年长度不同，不能直接相比推断增速。2025 出海收入占比 82.25%，毛利贡献占比 48.62%；2026H1 对应约 84.14%、53.74%。</p>
+<div class="table-wrap"><table><tr><th>2026H1 业务</th><th>收入</th><th>毛利：计算值</th><th>毛利率</th><th>收入同比</th></tr><tr><td>出海广告投放</td><td>290.7885</td><td>5.4398</td><td>1.87%</td><td>+7.68%</td></tr><tr><td>全案推广服务</td><td>30.1398</td><td>2.9480</td><td>9.78%</td><td>-17.75%</td></tr><tr><td>全案广告代理</td><td>24.6886</td><td>1.7355</td><td>7.03%</td><td>+46.03%</td></tr></table></div>
+<p><b>利润归因。</b>H1 税前利润增加 117,906,808.27 元；公允价值变动改善 59,003,739.13 元，信用减值损失减少 54,702,009.59 元。后两项合计相当于税前增量的 96.44%。这是报表行变动的算术对比，其他项目有增减抵消，不是完整因果分解。</p>
+<p><b>AI 投入。</b>2025 研发费用 9,520.84 万元，同比 +76.52%；2026H1 为 9,458.49 万元，同比 +173.45%。2025 年末员工 2,431 人，上年末 2,311 人，增加 120 人。AI 驱动收入 37.25 亿元是管理层披露口径；法定业务表未单列其毛利或 ARR。</p><details class="reader-sources"><summary>查看来源</summary><p>来源：<a href="https://static.cninfo.com.cn/finalpage/2026-04-16/1225107656.PDF">2025 年报 p7、13–15、18、39、74</a>、<a href="https://static.cninfo.com.cn/finalpage/2026-08-29/1225523931.PDF">2026 半年报 p7、14、41</a>、<a href="https://en.bluefocus.com/news/ceo-letter-to-investors/">CEO 信</a>。页码为报告页码。</p></details></div><div class="page-footer"><a href="#p1">返回目录</a><a href="#p2">业务话题</a><a href="#p3">落地安排</a><a href="#p4">90 秒开场</a><a href="#p14">结尾总结</a></div></section><section class="page evidence" id="p18" data-page="18"><div class="eyebrow">18 / 30　E｜证据备查 · 按需查阅</div><h1>E02｜采购条件、营运资金与战略含义</h1><div class="reader-body"><p><b>采购集中，客户分散。</b>2025 前五供应商占采购 91.34%，第一供应商 40.75%，前三合计 84.93%。前五客户占收入 13.93%，最大客户 3.45%。年报匿名披露供应商，未给出各排名对应的平台名称。</p>
+<div class="table-wrap"><table><tr><th>合并报表项目，亿元</th><th>2025 年末</th><th>2026 年中</th></tr><tr><td>应收账款净额</td><td>136.6928</td><td>172.3946</td></tr><tr><td>应付账款</td><td>142.2484</td><td>171.0087</td></tr><tr><td>预付款项</td><td>1.6848</td><td>6.4162</td></tr><tr><td>合同负债</td><td>6.1765</td><td>12.2545</td></tr><tr><td>货币资金</td><td>47.6393</td><td>47.7691</td></tr><tr><td>短期借款</td><td>15.7524</td><td>18.4412</td></tr></table></div>
+<p>H1 经营性应收项目增加占用 41.4697 亿元现金，经营性应付增加提供 38.4752 亿元，两项净占用 2.9945 亿元。期末货币资金中受限现金约 0.3222 亿元。总负债中有大量经营性应付，不能全算成有息债务，也不能把应收余额当作即时资金缺口。</p>
+<p><b>两项可复算的敏感性。</b>出海收入 56,495,678,390.02 元 × 0.001 = 56,495,678.39 元，即毛利率变化 10 个基点对应约 5,650 万元毛利。另若应收净额的 10% 延迟 30 天，则约 17.2395 亿元现金流入推迟；资金成本为该金额 × 实际年利率 × 30/365。两者都不是预测或收益承诺。</p>
+<p><b>战略含义。</b>2026H1 游戏、电商、互联网及应用客户收入占比分别为 41.90%、24.73%、23.66%，合计 90.29%。游戏与应用增长、出海内容测试，与这组收入结构直接相关。</p>
+<p>管理层“5-3-2”是未来利润结构目标：头部三大媒体 50%，中腰部媒体 30%，自有流量及技术 20%；不是已实现的收入结构。模拟可以比较过渡期的客户效果、采购条件和投入成本；需要内部合同才能求解。</p><details class="reader-sources"><summary>查看来源</summary><p>来源：<a href="https://static.cninfo.com.cn/finalpage/2026-04-16/1225107656.PDF#page=15">2025 年报 p14–15</a>、<a href="https://static.cninfo.com.cn/finalpage/2026-08-29/1225523931.PDF">2026 半年报 p11、15、37–38、80–81、97、107</a>、<a href="https://en.bluefocus.com/news/ceo-letter-to-investors/">CEO 信</a>。</p></details></div><div class="page-footer"><a href="#p1">返回目录</a><a href="#p2">业务话题</a><a href="#p3">落地安排</a><a href="#p4">90 秒开场</a><a href="#p14">结尾总结</a></div></section><section class="page evidence" id="p19" data-page="19"><div class="eyebrow">19 / 30　E｜证据备查 · 按需查阅</div><h1>E03｜公开客户项目：汽车、硬件与消费</h1><div class="reader-body"><p>下表核实的是蓝标或其业务品牌参与过指定项目。它不是当前客户名单、在手合同或 Backer 销售管线。执行日未明确时，采用披露时间；平台和联名 IP 不自动算作付费客户。</p>
+<div class="table-wrap"><table><tr><th>品牌／项目</th><th>时间与已披露服务</th><th>可进一步测试的决定</th></tr><tr><td>坦克 500</td><td>2025 项目回顾；新蓝标数字全链路达人营销。<a href="https://www.sohu.com/a/976615398_202730">来源</a></td><td>家庭体验、技术信任两类叙事的顺序与组合</td></tr><tr><td>小鹏 X9</td><td>2026-02-05 披露；人群、内容与投放 SOP。<a href="https://www.sohu.com/a/984052564_202730">来源</a></td><td>哪类使用场景最能改变 MPV 考虑意愿</td></tr><tr><td>东风 eπ007</td><td>2025-05-21 AI 共创发布会；脚本、数字人、虚拟制作。<a href="https://www.adquan.com/article/352646">来源</a></td><td>发布内容是否解释清楚关键产品价值</td></tr><tr><td>极石 ROX 沙特</td><td>2025-02-10 入市；蓝标做本地社媒、内容与经销商导流。<a href="https://www.adquan.com/article/359088">项目</a>／<a href="https://www.roxmotor.com/en/about-news/?path=leap">品牌</a></td><td>越野、家庭舒适、气候适配，先讲哪项</td></tr><tr><td>Redmi Note 14</td><td>2025 全球上市；多国达人与 AR 挑战，TikTok 是媒体方。<a href="https://www.adquan.com/article/359088">来源</a></td><td>同一互动在不同市场的理解与参与门槛</td></tr><tr><td>realme C 系列巴西</td><td>2025-12 披露；蓝瀚／蓝标传媒，Kwai 短剧、挑战与本地内容。<a href="https://finance.sina.com.cn/stock/relnews/cn/2025-12-12/doc-inhaprxf7146103.shtml">来源</a></td><td>耐用卖点怎样既有趣、又可信</td></tr><tr><td>美的“守护珠峰守护者”</td><td>2026-03 披露；真实安装、影视飓风内容及传播。<a href="https://www.adquan.com/article/359088">来源</a></td><td>极端场景能否传递日常购买价值</td></tr><tr><td>李锦记“70万零1个餐桌”</td><td>2025 春节；海外华人、餐馆纪实叙事。<a href="https://www.lkk.com.cn/media-centre/news/2025-01-13-729.html">品牌</a>／<a href="https://www.digitaling.com/projects/337812.html">项目</a></td><td>乡情叙事如何跨代际、跨市场被理解</td></tr><tr><td>星巴克“我在古代开星巴克”</td><td>2024 国庆；短剧、古建门店、KOL、直播与购券。<a href="https://www.adquan.com/article/355497">奖项案例</a></td><td>结尾入口怎样增加实际到店与核销</td></tr><tr><td>前滩太古里 AI 互动</td><td>2024-09 执行，2025 获奖；AI 影像、本色测试、线下体验。<a href="https://winner.roifestival.com/cn/winners/detail/863adkoj?year=2025">官方案例</a></td><td>互动选择、动线、排队怎样影响有效逛店</td></tr></table></div>
+<p>右栏是基于公开项目提出的下一轮实验方向，并非品牌已提出的委托需求。公开传播量与奖项未单独提供活动增量的对照验证。</p></div><div class="page-footer"><a href="#p1">返回目录</a><a href="#p2">业务话题</a><a href="#p3">落地安排</a><a href="#p4">90 秒开场</a><a href="#p14">结尾总结</a></div></section><section class="page evidence" id="p20" data-page="20"><div class="eyebrow">20 / 30　E｜证据备查 · 按需查阅</div><h1>E04｜公开客户项目：电商、游戏与企业品牌</h1><div class="reader-body"><div class="table-wrap"><table><tr><th>品牌／项目</th><th>时间与已披露服务</th><th>可进一步测试的决定</th></tr><tr><td>京东快递 × 和平精英</td><td>2025 毕业季；新蓝标数字内容、校园与电竞联动。和平精英为 IP。<a href="https://www.adquan.com/article/358805">来源</a></td><td>毕业情绪表达怎样连接真实寄件需求</td></tr><tr><td>京东双 11</td><td>2025-12 披露“1分钱信任杠杆”；选品、人群、内容与转化。<a href="https://finance.sina.com.cn/stock/relnews/cn/2025-12-12/doc-inhaprxf7146103.shtml">来源</a></td><td>低价入口带来新增价值，还是仅补贴旧客</td></tr><tr><td>佳能“龙门镇风云”</td><td>2025 项目回顾；反假冒古装喜剧与知识产权传播。<a href="https://www.adquan.com/article/358805">来源</a></td><td>看懂剧情后，能否正确识别购买风险</td></tr><tr><td>联想 AI Talk</td><td>2025 ESG 收录；数字分身、AIGC 物料、品牌沟通。<a href="https://static.cninfo.com.cn/finalpage/2026-04-16/1225107673.PDF#page=22">报告 p19</a></td><td>数字人、真人或混合形式的理解与信任</td></tr><tr><td>贵州茅台海外传播</td><td>2025 项目；多国媒体、地标资源与国际公关。<a href="https://static.cninfo.com.cn/finalpage/2026-04-16/1225107673.PDF#page=29">报告 p26</a></td><td>文化、工艺与使用场景的当地理解差异</td></tr><tr><td>腾讯《高能英雄》</td><td>首次版更项目，2024 平台会议案例；思恩客分群与差异化素材。<a href="https://agent.oceanengine.com/awardsDetail/17237">平台</a></td><td>拉新、回流和留存目标之间怎样分配资源</td></tr><tr><td>腾讯《和平精英》</td><td>2023 下半年 8 次 IP 联动；思恩客触达拟流失玩家。<a href="https://agent.oceanengine.com/awardsDetail/17256">平台</a></td><td>什么联动内容值得用于召回</td></tr><tr><td>零跑 B10</td><td>2025 项目回顾；“十次充电横穿中国”达人共创。<a href="https://www.adquan.com/article/358805">来源</a></td><td>长途能力证据怎样转化为日常可信度</td></tr><tr><td>高德扫街榜</td><td>2025 项目回顾；新品上市抖音 KOL 推广。<a href="https://www.adquan.com/article/358805">来源</a></td><td>什么信息能让用户愿意第一次尝试</td></tr><tr><td>雀巢小佳膳</td><td>2025 项目回顾；小红书“科学六步”内容精耕。<a href="https://www.adquan.com/article/358805">来源</a></td><td>专业信息是否被正确理解；不推断治疗效果</td></tr></table></div>
+<p><b>组织归属。</b>2025 ESG 列出新蓝标数字、蓝标传媒相关品牌、蓝瀚互动、思恩客、蓝色星合等。集团内部品牌与汇报关系可能调整，对接前应确认负责人。</p>
+<p><b>检索范围。</b>覆盖法定披露、集团及业务品牌公开稿、品牌官网、巨量引擎与奖项案例库。表内为具有公开来源的代表性项目，未包含未公开客户。</p></div><div class="page-footer"><a href="#p1">返回目录</a><a href="#p2">业务话题</a><a href="#p3">落地安排</a><a href="#p4">90 秒开场</a><a href="#p14">结尾总结</a></div></section><section class="page evidence" id="p21" data-page="21"><div class="eyebrow">21 / 30　E｜证据备查 · 按需查阅</div><h1>E05｜已进入企业流程的模拟案例</h1><div class="reader-body"><div class="table-wrap"><table><tr><th>案例与证据身份</th><th>已披露的工作与结果</th><th>对蓝标的启发及限制</th></tr><tr><td>CVS × Simile：客户白皮书</td><td>Pet Rx 上市：4 项洞察形成 6 个概念；多轮研究 2–3 个月缩至 3 天。<a href="https://www.cvshealth.com/content/dam/enterprise/cvs-enterprise/pdfs/2026/CVS_WhitepaperCVSxSimile.pdf">p10</a></td><td>在制作前筛选传播概念；未披露销售增量对照</td></tr><tr><td>CVS × Simile：客户文章</td><td>探索药品续配体验中的理解、焦虑与服务摩擦，形成后续研究重点。<a href="https://www.cvshealth.com/news/innovation/how-cvs-health-test-drives-better-care-experiences-using-generative-agents.html">原文</a></td><td>可对应试用、开户、续订等旅程研究；不代表已改善实际依从性</td></tr><tr><td>Itaú × Simile：具名供应商案例</td><td>Pix 自动支付研究：7 项假设；研究 5 周变 4 工作日，概念探索 2 周变不足 3 小时。<a href="https://www.simile.com/blog/itau-at-esomar">原文</a></td><td>业务、创意与产品共同测试理解、信任和控制感；未披露实际采用率增量</td></tr><tr><td>Wealthfront × Simile：客户证言</td><td>定性研究覆盖扩大 15 倍。<a href="https://www.simile.com/">官网</a></td><td>可先扩大问题覆盖，再安排真人研究；15 倍不是准确率或收入倍数，口径细节未公开</td></tr></table></div>
+<p><b>这组案例最能支持的商业判断：</b>企业愿意尝试把既有研究转化为可继续提问的工具，用于缩小方案范围、发现遗漏和安排下一轮研究。公开证据的强项是工作流和研究周期，不是完整证明所有决策的经济增量。</p>
+<p>CVS 白皮书将更复杂的多方互动与世界模拟列入后续探索阶段；已披露项目集中在概念与体验研究。</p>
+<p>对 Backer，首个可售交付可以很具体：一份 brief、数个真实方案、目标受众证据，换来一组可验证的排序、误解和下一步测试。报价包括数据获取、模拟、复核与实验设计，后续项目再比较接入与交付工时。</p></div><div class="page-footer"><a href="#p1">返回目录</a><a href="#p2">业务话题</a><a href="#p3">落地安排</a><a href="#p4">90 秒开场</a><a href="#p14">结尾总结</a></div></section><section class="page evidence" id="p22" data-page="22"><div class="eyebrow">22 / 30　E｜证据备查 · 按需查阅</div><h1>E06｜EY、代理商合作与资本市场用途</h1><div class="reader-body"><div class="table-wrap"><table><tr><th>案例</th><th>已披露事实</th><th>适用范围</th></tr><tr><td>EY × Aaru</td><td>既有财富管理调查覆盖 3,600 人、30 多市场；供应商披露盲测，约一天完成；53 道单选题 Spearman 中位数 0.90，RMSE 7.1 个百分点。<a href="https://www.ey.com/en_pl/insights/wealth-asset-management/how-ai-simulation-accelerates-growth-in-wealth-and-asset-management">EY</a>／<a href="https://aaru.com/case-studies/ey-wealth-research">Aaru</a></td><td>不等于 90% 个人行为预测准确，也不证明干预、销量或投资收益；尚非独立复核</td></tr><tr><td>IPG × Aaru</td><td>IPG 2025-08 公告称已用于金融、医疗、快消项目的创意与执行测试，拟接入 Interact。<a href="https://www.globenewswire.com/news-release/2025/08/11/3130751/0/en/interpublic-partners-with-aaru-to-leverage-ai-powered-predictive-simulations-to-accelerate-scale-and-optimize-marketing.html">IPG 新闻稿</a></td><td>未公开客户、效应量或对照设计；不能报某百分比 ROI</td></tr><tr><td>Breakwater × Aaru</td><td>2026-07 发布资本市场研究产品；40,000 个模拟投资者、71 项判断，比较指引、AI 经济性等情境。<a href="https://aaru.com/case-studies/breakwater-conviction-advantage">案例</a></td><td>报告百分比是模拟结果，不是真人问卷比例；未证明股价或融资成本改善</td></tr><tr><td>Simile 财报演练</td><td>CEO 在 Sequoia 官方全文称客户经常提出这一需求，使用多 Agent 模拟。<a href="https://sequoiacap.com/podcast/simulating-humans-at-scale-similes-joon-sung-park">全文</a></td><td>未具名、未公开评价集或命中率；不能声称已验证 80% 提问命中</td></tr></table></div>
+<p><b>渠道启发。</b>EY 和 IPG 说明，模拟可以嵌入已有咨询、研究和营销服务渠道。蓝标的业务入口可以是定案前的决策研究，由原有客户团队交付并衔接制作与投放。</p>
+<p><b>IR 的可验收输出。</b>事前锁定前 K 个问题和主题；实际会议后，由不知道来源的评审比较主题覆盖、重要漏项、无关问题及可准备性。基线是 IR 团队与普通检索加大模型。管理层采用了建议可能改变现场问答，因此命中率与准备价值应分别评估。</p></div><div class="page-footer"><a href="#p1">返回目录</a><a href="#p2">业务话题</a><a href="#p3">落地安排</a><a href="#p4">90 秒开场</a><a href="#p14">结尾总结</a></div></section><section class="page evidence" id="p23" data-page="23"><div class="eyebrow">23 / 30　E｜证据备查 · 按需查阅</div><h1>E07｜Simile 研究与两期访谈，应该怎样引用</h1><div class="reader-body"><p><b>研究方法。</b>Simile 团队的个体模拟研究以 1,052 名美国参与者的深度访谈为基础，在调查和行为任务上评估泛化。广为传播的“85%”来自早期版本相对真人两周自我复测一致性的指标，不是绝对正确率。论文后续版本已有修订，应按对应版本读取指标。<a href="https://arxiv.org/abs/2411.10109">论文与版本记录</a></p>
+<p>Socrates 研究采用 210 项研究、约 40 万参与者的实验资料，并留出整项研究检验。启发是按完整实验或项目留出验证，避免同一实验的相似题目同时进入训练和测试。<a href="https://aclanthology.org/2025.emnlp-main.1530.pdf">EMNLP 论文</a></p>
+<p>Simile 的置信度文章讨论用留出题目的实际误差校准可信度。模型多次回答一致，只说明生成稳定；还必须检查它是否稳定地答错。Backer 的验收阈值将依据具体业务的误差与损失制定。<a href="https://www.simile.com/blog/confidence">方法说明</a></p>
+<p><b>Sequoia。</b>官方全文可确认真实人群访谈、行为资料、概念测试和财报演练；同时承认长链互动与分歧是研究问题。财报用途见 concept testing 后的 earnings call 段。<a href="https://sequoiacap.com/podcast/simulating-humans-at-scale-similes-joon-sung-park">官方全文</a></p>
+<p><b>Harry Stebbings／20VC。</b><a href="https://www.thetwentyminutevc.com/joon-sung-park">官方节目</a>与<a href="https://www.youtube.com/watch?v=ya6D6-SizbI">视频</a>讨论专有数据、真实反馈及企业采购。以下时间依据可检索字幕，用于定位话题；不作为原声逐秒转写。</p>
+<div class="table-wrap"><table><tr><th>时间</th><th>可用于讨论的内容</th><th>引用处理</th></tr><tr><td>07:59–12:31</td><td>言行差距、行为与实验数据</td><td>Starbucks 举例不是已落地客户</td></tr><tr><td>16:56–19:59</td><td>现实反馈与校准</td><td>不代表所有客户都完成验证</td></tr><tr><td>27:28–31:26</td><td>企业采购、复现研究、避免昂贵错误</td><td>12% 是主持人假设；五亿美元不是已审计节省</td></tr></table></div>
+<p>财报演练的依据使用上面的 Sequoia 官方全文；本报告不使用未经原始证据核验的提问命中率。字幕定位：<a href="https://ulisten.ai/channels/20vc/the-ai-company-simulating-the-entire-economy-simile-co-found_ya6D6-SizbI/transcript">uListen</a>、<a href="https://bidclub.ai/e/20vc-best-ai-companies-have-unique-data-acquisit">Bidclub</a>。</p></div><div class="page-footer"><a href="#p1">返回目录</a><a href="#p2">业务话题</a><a href="#p3">落地安排</a><a href="#p4">90 秒开场</a><a href="#p14">结尾总结</a></div></section><section class="page evidence" id="p24" data-page="24"><div class="eyebrow">24 / 30　E｜业务实施 · 负责人、数据与交付</div><h1>E08｜集团经营：六类决定的实施清单</h1><div class="reader-body"><p>建议每个模块先选一个业务单元、一位决策负责人和一段可取得结果的观察期。财务负责统一核算口径，业务负责给出真实可执行的选项，Backer 将数据和规则整理成可重复运行的比较。</p>
+<div class="table-wrap"><table><tr><th>工作包与业务负责人</th><th>接入哪些字段</th><th>交付什么</th><th>用什么结果验收</th></tr><tr><td>接单与报价／业务总经理</td><td>报价明细、外采费用、岗位工时、修改轮次、补量、付款条件</td><td>三档报价的项目贡献、报价底线与允许修改次数</td><td>项目实际贡献；工时、返工和回款偏差</td></tr><tr><td>媒体采购／采购与财务</td><td>供应商、计量周期、量门槛、返点档位、授信、客户效果要求</td><td>各采购组合的返点、成本、剩余达量缺口</td><td>合同逐条核对；实际结算与测算差额</td></tr><tr><td>现金安排／资金负责人</td><td>应收应付到期日、预计到账日、预付款、可用授信、融资报价</td><td>按日现金曲线、峰值占用、需调整的账期</td><td>金额及到账时间误差；峰值占用偏差</td></tr><tr><td>区域投入／区域负责人</td><td>现有签约、机会管线、当地工资、外包报价、交付及退出成本</td><td>远程服务、合作交付、自建团队的投入顺序</td><td>已签约贡献、团队利用率、现金消耗</td></tr><tr><td>交付产能／业务与 HR</td><td>任务到达时间、制作耗时、审核等待、返工率、角色产能</td><td>加人、加工具、改审核流程的周期与成本</td><td>同类任务交付周期、一次验收通过率</td></tr><tr><td>投后业务拓展／业务与 CVC</td><td>待推广产品、客户任务、现有替代品、试用成本、采购条件</td><td>优先客户类型、购买阻力、试点方案</td><td>实际试用、采购与续用；销售及交付投入</td></tr></table></div>
+<p><b>项目贡献统一口径。</b>以客户可确认收入，扣除直接采购、可归属交付、返工和研究成本；资金占用另列。财务将它与报表毛利、期间费用对应，保证同一成本只计一次。客户的营销回报、蓝标的项目贡献与 Backer 的收费分别呈现。</p>
+<p><b>产能模拟举例。</b>一个素材制作只需一天，审核却排队两天。模型按项目记录还原任务到达、角色处理速度和返工路径，比较增加制作人、增加审核产能、调整审批权限。业务负责人能看到瓶颈移到哪里，以及旺季订单增加后是否仍然有效。</p>
+<p><b>起步顺序。</b>先选数据和反馈已经具备的一个决定。客户方案可接下一场真实活动；采购现金可先回放已结算合同；组织产能先选同类任务较多的一支团队。</p><details class="reader-sources"><summary>查看来源</summary><ul><li><a href="https://static.cninfo.com.cn/finalpage/2026-04-16/1225107656.PDF">蓝色光标2025年报</a> · 13–15</li><li><a href="https://static.cninfo.com.cn/finalpage/2026-08-29/1225523931.PDF">蓝色光标2026半年报</a> · 15、107</li></ul></details></div><div class="page-footer"><a href="#p1">返回目录</a><a href="#p2">业务话题</a><a href="#p3">落地安排</a><a href="#p4">90 秒开场</a><a href="#p14">结尾总结</a></div></section><section class="page evidence" id="p25" data-page="25"><div class="eyebrow">25 / 30　E｜产品实施 · 工作台操作</div><h1>E09｜产品怎么用：从一份 brief 到一次决定</h1><div class="reader-body"><p>第一轮产品按下面六项验收。业务人员要能独立放入方案、修改条件、保存决定和回填结果；页面首先显示正在比较什么、差异来自哪里、下一步由谁处理。模型版本和运行记录放在详情里。</p>
+<div class="table-wrap"><table><tr><th>操作</th><th>使用者填写或看到什么</th><th>验收时必须拿到什么</th></tr><tr><td>1. 建立决定</td><td>负责人、截止日、目标人群、主指标、预算与执行限制</td><td>一页 brief；区分可以调整的变量与固定条件</td></tr><tr><td>2. 放入备选项</td><td>真实报价、脚本、内容版本、采购或用人安排</td><td>可并排比较的方案；费用缺项和资料冲突清单</td></tr><tr><td>3. 接入依据</td><td>历史结果、访谈、合同、项目记录；标明日期和来源</td><td>按人群、项目、时间对齐的证据；原文可追溯</td></tr><tr><td>4. 运行比较</td><td>查看分组反应、成本与结果差异；修改一个条件再比较</td><td>方案排序、差异来源、关键假设及排序反转条件</td></tr><tr><td>5. 保存决定</td><td>选择方案、填写理由、确定下一项测试</td><td>带时间戳的输入、输出、模型与决定版本</td></tr><tr><td>6. 回填结果</td><td>填入实投、结算或任务验收数据</td><td>预测与实际对照；下次应调整的参数与资料</td></tr></table></div>
+<p><b>一处报价变化怎样处理。</b>例如某创作者价格从 3,000 美元改为 3,500 美元，系统保留旧报价，仅重算包含此人的组合、总成本和预算余量。原有受众反应保留；脚本同时修改时，再重新测试受众反应，并记录两次变化各自的影响。</p>
+<p><b>结果呈现三种口径。</b>历史最小值、中位数、最大值标为“历史分布”；由人为参数计算的结果标为“情景测算”；通过留出数据检验的预测，展示估计区间与适用人群。尚未校准的数值保留前两种口径，避免把资料范围读成预测精度。</p>
+<p><b>计算与模拟的分工。</b>合同、费用与预算由程序计算；统计模型估计有实际结果支持的数值；行为模拟比较人群对不同方案的反应；运行层保存证据、参数和版本。用户可以点进某一结论，看到“哪条资料、哪个条件让这个方案排在前面”。</p>
+<p>MiroFish 的图谱和角色追问适合放入探索详情。日常决策页优先展示方案差异和可执行动作，便于业务负责人直接使用。</p><details class="reader-sources"><summary>查看来源</summary><ul><li><a href="https://github.com/666ghj/MiroFish">MiroFish开源仓库</a></li></ul></details></div><div class="page-footer"><a href="#p1">返回目录</a><a href="#p2">业务话题</a><a href="#p3">落地安排</a><a href="#p4">90 秒开场</a><a href="#p14">结尾总结</a></div></section><section class="page evidence" id="p26" data-page="26"><div class="eyebrow">26 / 30　E｜合作实施 · 客户方案试点</div><h1>E10｜首轮试点：六周交付什么，谁来负责</h1><div class="reader-body"><p>建议选一个六周内可以拿到反馈的内容或概念决定，例如游戏下一次版更，或新品的两到三套传播方案。蓝标指定一位项目负责人，协调策略、研究和投放；Backer 负责数据整理、比较模型和结果记录。客户负责人确认目标与真实测试预算。</p>
+<div class="table-wrap"><table><tr><th>时间</th><th>工作包</th><th>主要责任人</th><th>交付与验收</th></tr><tr><td>第1周</td><td>定义决定、选项与数据范围</td><td>蓝标项目负责人＋Backer</td><td>一页 brief、材料清单、主指标、可执行选项；约定结果回传人</td></tr><tr><td>第2周</td><td>整理历史资料与目标样本</td><td>蓝标研究／数据同事＋Backer</td><td>字段映射、目标人群、既有方法的判断；数据缺项逐项处理</td></tr><tr><td>第3周</td><td>比较候选方案并修改</td><td>Backer＋策略负责人</td><td>人群×方案对比、主要反对理由、成本、建议修改；同条件下重跑</td></tr><tr><td>第4周</td><td>保存预测，做真人概念测试</td><td>Backer＋研究负责人</td><td>封存排序与分组差异；测试样本独立于建模资料；记录漏掉的误解</td></tr><tr><td>第5周</td><td>小额实投或业务测试</td><td>蓝标投放／业务负责人</td><td>在约定条件下比较候选组合，保留受众、曝光及实验分配记录</td></tr><tr><td>第6周</td><td>对照结果与项目经济核算</td><td>双方项目负责人</td><td>决策复盘、误差与适用条件、实际工时和成本、下一单的复用清单</td></tr></table></div>
+<p><b>验收只围绕这个决定。</b>概念研究看方案排序、重要误解的发现和误报；游戏投放看有效激活、回流与七日留存；IR 看重点主题覆盖、重要漏问和准备时间；资金模型看现金峰值与到账日期偏差。双方在第一周选定主指标及参照方法，结果连同样本量和误差范围一起报告。</p>
+<p><b>把商业账同时算清楚。</b>每单记录研究样本、模型调用、人工复核、工程接入和交付工时；蓝标记录新增研究收费、返工变化及客户下一次采购意愿。首次接入与后续使用分开计价，便于判断第二个项目是否更容易交付。</p>
+<p><b>启动所需材料。</b>一个尚未定案的 brief、两到三套可执行方案、已有研究与历史结果、可回传结果的业务联系人。数据使用范围、项目留存与训练用途分项约定。六周覆盖短周期项目；长期销售和六个月人员表现，按各自结果窗口继续观察。</p><details class="reader-sources"><summary>查看来源</summary><ul><li><a href="https://www.cvshealth.com/content/dam/enterprise/cvs-enterprise/pdfs/2026/CVS_WhitepaperCVSxSimile.pdf">CVS×Simile客户白皮书</a> · 10</li><li><a href="https://www.ey.com/en_pl/insights/wealth-asset-management/how-ai-simulation-accelerates-growth-in-wealth-and-asset-management">EY财富管理模拟案例</a></li></ul></details></div><div class="page-footer"><a href="#p1">返回目录</a><a href="#p2">业务话题</a><a href="#p3">落地安排</a><a href="#p4">90 秒开场</a><a href="#p14">结尾总结</a></div></section><section class="page evidence" id="p27" data-page="27"><div class="eyebrow">27 / 30　E｜人才实施 · 数据结构与工作样本</div><h1>E11｜招聘模块：把面试证据接到六个月结果</h1><div class="reader-body"><p>第一期选同一个岗位族和职级，由业务负责人定义六个月目标，HR 负责资料授权和人员对应，数据同事连接面试与项目记录。以 AI Builder 为例，目标可设为：在质量验收通过的前提下，独立完成约定复杂度的功能，并满足交付与返工标准。</p>
+<div class="table-wrap"><table><tr><th>数据对象</th><th>最小字段</th><th>形成的业务判断</th></tr><tr><td>人与岗位</td><td>脱敏人员ID、岗位族、职级、入职批次、预测截止日</td><td>哪些历史人员可以比较；当时有哪些资料</td></tr><tr><td>面试证据</td><td>问题、转写片段、时间、能力项、评分、原文位置</td><td>是否能拆解问题、核对事实、识别约束</td></tr><tr><td>工作样本</td><td>任务版本、输入、完成时间、交付物、验收及修改记录</td><td>在相同条件下能否独立完成任务</td></tr><tr><td>项目记录</td><td>角色、任务复杂度、负责人、关键节点、依赖与支持</td><td>哪些结果受到分工、资源与等待影响</td></tr><tr><td>工作成果</td><td>验收结果、缺陷、返工、实际使用情况、客观佐证</td><td>六个月目标完成程度及交付质量</td></tr><tr><td>绩效评价</td><td>目标版本、评价日、评价人、成果链接、观察完整性</td><td>统一结果标签；保留评分差异和缺失原因</td></tr></table></div>
+<p><b>一个可直接使用的工作样本。</b>给候选人同一份客户 brief、三份报价和一张历史效果表，其中保留一项缺失费用和一处指标口径冲突。要求交付可运行的比较工具，并说明还需要向业务确认什么。验收看问题识别、条件处理、计算正确性、交付可用性和修改后的稳定性。</p>
+<p><b>同一套记录，支持三个独立任务。</b>招聘模型以入职前证据预测六个月结果；在岗匹配以截至某日的工作记录预测下一段任务表现；培训和调岗方案用分阶段试点观察改变条件后的实际效果。各自保存输入截止日和观察窗口。</p>
+<p>能力证据采用工作内容、任务回答与成果；私人聊天、声纹、口音和人口特征不进入能力评分。个人可以核对被引用的资料，HR 和业务主管复核结果。未满观察期、离职或记录缺失分别标记，保留原因。</p><details class="reader-sources"><summary>查看来源</summary><ul><li><a href="https://www.siop.org/wp-content/uploads/2024/12/Considerations-and-Recommendations-for-the-Validation-and-Use-of-AI-Based-Assessments-for-Employee-Selection-January-2023.pdf">SIOP：AI员工甄选评估的验证与使用建议</a></li></ul></details></div><div class="page-footer"><a href="#p1">返回目录</a><a href="#p2">业务话题</a><a href="#p3">落地安排</a><a href="#p4">90 秒开场</a><a href="#p14">结尾总结</a></div></section><section class="page evidence" id="p28" data-page="28"><div class="eyebrow">28 / 30　E｜人才实施 · 概率口径与校准</div><h1>E12｜人才概率：怎样估计，怎样给业务看</h1><div class="reader-body"><p>模型估计的对象是：在约定岗位、任务与支持条件下，候选人六个月后超预期、达预期或低于预期的概率。三类结果由业务事先定义，互斥且合计为100%。入职后成果形成结果标签，面试和工作样本形成决策时可用的输入。</p>
+<div class="table-wrap"><table><tr><th>步骤</th><th>具体做法</th><th>交付物</th></tr><tr><td>定义结果</td><td>先确定任务复杂度、质量、交付与返工标准，再评历史记录</td><td>三档结果规则；观察未完成和资料缺失的处理表</td></tr><tr><td>提取证据</td><td>将面试回答映射到岗位能力，并保留原文位置；加入结构化工作样本评分</td><td>可复核的人员×能力证据表</td></tr><tr><td>建立模型</td><td>与同岗位基准率、结构化面试评分及简单统计模型比较</td><td>各方法在同一批样本上的结果</td></tr><tr><td>留出检验</td><td>留出较晚入职批次；同一人记录归入同一组；调参与测试分开</td><td>新批次概率误差、校准图、区间和有效样本量</td></tr><tr><td>影子使用</td><td>新批次保留原招聘流程，额外记录预测，待六个月结果到齐后核对</td><td>前瞻检验；按岗位、团队检查适用范围</td></tr></table></div>
+<p><b>校准的读法，以下为演示数据。</b>假设100名可比人员被模型归入“超预期概率60%—70%”这一档，后续其中65人达到预先定义的超预期标准，这一档的平均预测与实际比例就比较接近。还需检查其他概率档、样本误差及不同批次表现。65%描述同类判断的长期可靠性，不确定某个人必然成功。</p>
+<p><b>业务结果卡片。</b>显示岗位与任务、资料截止日、六个月目标、同岗位基准率、三档概率及估计区间、有效样本和适用范围；下面列支持证据、反对证据以及建议补做的工作测试。数值尚未完成校准时，概率栏显示“待校准”，先交付证据与测试建议。</p>
+<p>企业的历史结果通常只覆盖已录用人员，因此第一期适用范围也先限定在可比录用人群。项目分配和主管支持进入情境分析；样本量按真实人员计算。HR 与业务主管据此补充面试、安排工作样本和配置支持，并保留人工决定与资料更正渠道。</p><details class="reader-sources"><summary>查看来源</summary><ul><li><a href="https://www.siop.org/wp-content/uploads/2024/12/Considerations-and-Recommendations-for-the-Validation-and-Use-of-AI-Based-Assessments-for-Employee-Selection-January-2023.pdf">SIOP：AI员工甄选评估的验证与使用建议</a></li><li><a href="https://www.cambridge.org/core/journals/industrial-and-organizational-psychology/article/revisiting-the-design-of-selection-systems-in-light-of-new-findings-regarding-the-validity-of-widely-used-predictors/A20984B138319E3D432E643978BF026D">Revisiting the Design of Selection Systems</a></li></ul></details></div><div class="page-footer"><a href="#p1">返回目录</a><a href="#p2">业务话题</a><a href="#p3">落地安排</a><a href="#p4">90 秒开场</a><a href="#p14">结尾总结</a></div></section><section class="page evidence" id="p29" data-page="29"><div class="eyebrow">29 / 30　E｜经营实施 · 对应第06页</div><h1>经营算例：把返点条件换成可执行的阈值</h1><div class="reader-body"><p><b>演示参数。</b>新增资金占用1亿元、新增返点120万元、年资金成本4%，按365天简单计息。占用额在比较期内保持不变；其他条件暂时相同。这组参数用于说明计算方法。</p>
+<div class="table-wrap"><table><tr><th>资金占用时间</th><th>资金成本</th><th>返点减资金成本</th></tr><tr><td>60天</td><td>657,534元</td><td>+542,466元</td></tr><tr><td>90天</td><td>986,301元</td><td>+213,699元</td></tr><tr><td>109.5天</td><td>1,200,000元</td><td>0元</td></tr><tr><td>120天</td><td>1,315,068元</td><td>−115,068元</td></tr></table></div>
+<p>资金成本＝新增占用额×年资金成本×占用天数÷365。临界天数＝新增返点÷（新增占用额×年资金成本）×365，本例为109.5天。谈判时就可以把“多给返点”转成具体条件：到账日、预付上限和客户可接受账期。</p>
+<p><b>正式模型按现金事件运行。</b>每笔客户回款、供应商付款、预付款释放、返点到账都记录金额和日期。日末可用现金＝日初现金＋当日流入－当日流出；结合可用授信计算资金峰值。计息按每天实际占用额累加，适应分批付款和部分回款。</p>
+<div class="table-wrap"><table><tr><th>必需参数</th><th>业务提供什么</th><th>怎样进入结果</th></tr><tr><td>返点规则</td><td>计量周期、阶梯、达量口径、支付日及追索条件</td><td>每个采购情景重新判定档位，并排入现金时间表</td></tr><tr><td>客户与供应商条款</td><td>金额、到期日、预收、预付及授信</td><td>逐日匹配流入与流出</td></tr><tr><td>经营波动</td><td>可比客户延迟、采购量波动及共同承压情景</td><td>比较正常、延迟和未达量时的收益与现金需求</td></tr><tr><td>其他增量成本</td><td>客户让利、交付、税费与信用损失</td><td>分项扣除；与财务确认核算口径</td></tr></table></div>
+<p><b>输出分开列示。</b>会计利润、真实现金流和资金机会成本各有一栏；同一笔资金成本只扣一次。集团层面同时约束返点门槛、授信和产能，先找出可行方案，再对客户反应等关键行为假设做小范围实测。</p><details class="reader-sources"><summary>查看来源</summary><ul><li><a href="https://static.cninfo.com.cn/finalpage/2026-08-29/1225523931.PDF">蓝色光标2026半年报</a> · 15、107</li></ul></details></div><div class="page-footer"><a href="#p1">返回目录</a><a href="#p2">业务话题</a><a href="#p3">落地安排</a><a href="#p4">90 秒开场</a><a href="#p14">结尾总结</a></div></section><section class="page evidence" id="p30" data-page="30"><div class="eyebrow">30 / 30　E｜交付实施 · 对应第12页</div><h1>私有部署与FDE：接入、交付和持续使用</h1><div class="reader-body"><p>第一期由一名业务负责人牵头，Backer实施工程师与数据、IT同事一起工作。工程工作围绕已选定的决定展开：接通所需资料，写入业务规则，跑通方案比较和结果回传，再交给业务人员持续使用。现场驻场或远程协作，按数据环境和客户安排确定。</p>
+<div class="table-wrap"><table><tr><th>工作包</th><th>交付内容</th><th>蓝标对接人</th><th>上线验收</th></tr><tr><td>数据接入</td><td>文件／系统连接、字段映射、人员与项目ID、增量更新</td><td>数据负责人</td><td>样本对账；新数据按约定频率更新</td></tr><tr><td>权限与环境</td><td>存储、检索、推理、日志、备份及访问配置</td><td>IT／安全负责人</td><td>沿用资料权限；核对完整数据流向</td></tr><tr><td>规则与模型</td><td>合同规则、财务计算、行为或统计模型、版本记录</td><td>业务＋财务／研究</td><td>历史题回放；关键算式及适用范围确认</td></tr><tr><td>业务使用</td><td>方案编辑、比较、决定留档、结果回填、操作培训</td><td>项目负责人</td><td>业务人员独立完成一次完整流程</td></tr><tr><td>运维交接</td><td>告警、失败恢复、升级、支持权限和资料删除流程</td><td>IT＋Backer</td><td>按约定演练恢复、权限撤回与删除</td></tr></table></div>
+<p><b>两种部署安排。</b>客户专属云使用隔离的租户、存储和访问配置；内网部署将数据、检索、模型推理、日志与运维都放在客户批准的环境。外部模型接口如获准使用，列明具体发送字段和保存安排。模型选择同时评估效果、延迟、算力与升级成本。</p>
+<p><b>交付后的日常分工。</b>业务同事维护方案和业务参数；数据同事维护来源与权限；Backer维护连接器、模型版本和运行服务。人事资料限定为获授权的岗位证据，保留资料核对与更正入口。</p>
+<p><b>收费与复用。</b>首次接入的实施工作，与后续使用及运维分开报价。每个项目记录接入人天、专属代码、人工复核、运行成本和业务自主使用次数。下一家同类客户复用连接器、规则组件、评估和界面；客户原始资料与专属结果按约定留在项目范围内。</p>
+<p>Palantir的情景分支与FDE模式提供了一个实施参考：工程师深入业务，把一次具体交付中反复出现的需求做成软件功能。本页为Backer建议的交付方案，具体环境与工作量由首轮项目确定。</p><details class="reader-sources"><summary>查看来源</summary><ul><li><a href="https://www.palantir.com/docs/foundry/ontology/overview-ontology-scenario">Palantir情景比较文档</a></li><li><a href="https://www.palantir.com/docs/foundry/platform-overview/overview/index.html">Palantir平台概述</a></li><li><a href="https://community.palantir.com/t/who-are-palantir-fdes/6847/4">Palantir官方社区FDE说明</a></li></ul></details></div><div class="page-footer"><a href="#p1">返回目录</a><a href="#p2">业务话题</a><a href="#p3">落地安排</a><a href="#p4">90 秒开场</a><a href="#p14">结尾总结</a></div></section></main><footer class="site-footer">Backer × 蓝色光标 · 业务讨论稿 · 2026.10.19<br>正文与批注支持共享编辑；持有链接的人可查看并修改。财报、客户项目及研究来源见各页来源与证据部分。</footer><script id="backer-reader-navigation">const QUESTIONS=[{"q": "Backer 到底模拟什么？", "answer": "先把要改变的条件写清楚，再分别计算人的反应和对业务的影响。", "page": 4, "evidence": 11}, {"q": "687 亿元收入，经营优化从哪一笔开始？", "answer": "我会先看三件事：什么单值得接，采购条件怎么谈，项目用什么方式交付。", "page": 5, "evidence": 17}, {"q": "多拿 120 万返点，什么时候反而不划算？", "answer": "先把新增返点和每天占用的现金放到同一张时间表上。", "page": 6, "evidence": 29}, {"q": "下一次游戏版更，拉新还是召回？", "answer": "下载便宜不一定留得下来，我们要比较人群、信息和预算的不同组合。", "page": 7, "evidence": 20}, {"q": "realme 等新品，拍什么之前还能多做一步？", "answer": "先看用户记住的是产品能力，还是只有好玩的情节，再决定把哪套内容做大。", "page": 7, "evidence": 19}, {"q": "管理层回答利润增长后，还会被追问什么？", "answer": "第二轮通常会回到改善能否持续，以及还要投入多少资金和人。", "page": 8, "evidence": 22}, {"q": "面试会讲工具，入职能不能交付？", "answer": "把面试证据接到六个月工作成果，先看这个岗位还缺哪项工作测试。", "page": 9, "evidence": 27}, {"q": "BlueAI 和 Aha 已经很强，Backer 接在哪里？", "answer": "接在三套方案已经摆上桌、但还没有签约定案的那一步。", "page": 11, "evidence": 25}, {"q": "除了客户服务，还能怎样帮助集团？", "answer": "把客户效果、合同毛利、资金占用和交付产能放在同一次比较里。", "page": 5, "evidence": 24}, {"q": "海外已经有谁把模拟用在实际项目里？", "answer": "CVS 用它选择上市概念，EY 用真实研究核对结果，IPG 把它接进客户创意测试。", "page": 10, "evidence": 21}, {"q": "报价或卖点变了，哪些结果要重新算？", "answer": "报价变化重算成本；卖点变化重测理解，两种变化分别留记录。", "page": 11, "evidence": 25}, {"q": "经营数据不能上传外部云，怎么办？", "answer": "从一个业务单元接清合同、订单和收付款，在 IT 批准的环境里处理。", "page": 12, "evidence": 30}, {"q": "驻场工程师第一次交付什么？", "answer": "可核对的数据表、能运行的情景计算，以及还需确认的条款差异清单。", "page": 12, "evidence": 30}, {"q": "六周结束能拿到什么？", "answer": "方案比较页、预测与实际对照、交付成本记录；长期结果按业务周期继续观察。", "page": 13, "evidence": 26}, {"q": "应该引荐哪位业务负责人？", "answer": "客户项目找策略负责人和投放同事；采购现金找出海业务负责人和财务。", "page": 16, "evidence": 13}, {"q": "超预期或低于预期的百分比从哪里来？", "answer": "用较晚入职批次核对六个月结果；没有校准时，先交付岗位证据和工作测试。", "page": 9, "evidence": 28}, {"q": "第二个项目具体复用什么？", "answer": "复用数据结构、计算组件和核对工具，再记录新项目少用了多少接入人天。", "page": 12, "evidence": 30}, {"q": "从一个用途，怎样自然讲到另一个？", "answer": "从客户预算接到蓝标自身的利润与现金，再接到项目究竟需要什么人。", "page": 15, "evidence": 14}];const navHeader=document.querySelector('header');function syncNavOffset(){document.documentElement.style.scrollPaddingTop=(Math.ceil(navHeader.getBoundingClientRect().height)+18)+'px';document.querySelectorAll('.page').forEach(p=>p.style.scrollMarginTop='0px')}window.addEventListener('resize',syncNavOffset);if(typeof ResizeObserver!=='undefined'){new ResizeObserver(syncNavOffset).observe(navHeader)}syncNavOffset();let current=1;const pageNodes=[...document.querySelectorAll('.page')],sel=document.querySelector('select'),pos=document.querySelector('#position');function go(n){syncNavOffset();n=Math.max(1,Math.min(30,n));const node=document.querySelector('#p'+n);current=n;sel.value=String(n);pos.textContent=n+' / 30';history.replaceState(null,'','#p'+n);node.scrollIntoView({behavior:'instant',block:'start'});document.querySelector('#results').style.display='none'}document.addEventListener('click',e=>{const a=e.target.closest('a[href^="#p"]');if(a&&!a.closest('[contenteditable="true"]')){e.preventDefault();go(Number(a.getAttribute('href').slice(2)))}});sel.onchange=()=>go(Number(sel.value));document.querySelector('#prev').onclick=()=>go(current-1);document.querySelector('#next').onclick=()=>go(current+1);document.querySelector('#big').onclick=()=>changeSize(1);document.querySelector('#small').onclick=()=>changeSize(-1);function changeSize(n){const s=parseFloat(getComputedStyle(document.body).getPropertyValue('--size'));document.body.style.setProperty('--size',Math.max(17,Math.min(30,s+n))+'px')}document.addEventListener('keydown',e=>{if(['INPUT','SELECT','TEXTAREA'].includes(e.target.tagName)||e.shiftKey||e.ctrlKey||e.metaKey||e.target.closest?.('[contenteditable="true"]')||window.getSelection()?.isCollapsed===false)return;if(['ArrowRight','PageDown'].includes(e.key)){e.preventDefault();go(current+1)}if(['ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();go(current-1)}});const search=document.querySelector('#search'),results=document.querySelector('#results');search.oninput=()=>{const words=search.value.trim().toLowerCase().split(/\s+/).filter(Boolean);results.replaceChildren();if(!words.length){results.style.display='none';return}const found=QUESTIONS.filter(x=>words.every(w=>(x.q+x.answer).toLowerCase().includes(w)));for(const item of found){let a=document.createElement('a');a.href='#p'+item.page;a.textContent=item.q+' → 第 '+item.page+' 页';let span=document.createElement('span');span.textContent=item.answer;a.append(span);results.append(a)}if(!found.length){const matches=pageNodes.filter(n=>!n.classList.contains('nav')&&!n.classList.contains('index')&&words.every(w=>n.textContent.toLowerCase().includes(w))).slice(0,8);for(const n of matches){const a=document.createElement('a');a.href='#p'+n.dataset.page;a.textContent=n.querySelector('h1').textContent+' → 第 '+n.dataset.page+' 页';results.append(a)}if(!matches.length)results.textContent='没有匹配话题。可以查看第 2–3 页的完整导航。';}results.style.display='block'};let ticking=false;window.addEventListener('scroll',()=>{if(ticking)return;ticking=true;requestAnimationFrame(()=>{let best=pageNodes[0];for(const n of pageNodes){if(n.getBoundingClientRect().top<=navHeader.getBoundingClientRect().bottom+24)best=n;else break}current=Number(best.dataset.page);sel.value=String(current);pos.textContent=current+' / 30';ticking=false})});window.addEventListener('hashchange',()=>{const n=Number(location.hash.slice(2));if(n>=1&&n<=30)go(n)});if(/^#p\d+$/.test(location.hash))setTimeout(()=>go(Number(location.hash.slice(2))),0);</script><script id="backer-comm-config">window.__BACKER_COMM__={"api": "https://backer-bluefocus.vercel.app/api/backerxbluefocus-comm", "documentId": "backer-bluefocus-comm-v1"};</script><script id="backer-annotation-data" type="application/json">{"version": 1, "documentId": "backer-bluefocus-comm-v1", "updatedAt": 0, "highlights": [], "notes": []}</script><script id="backer-annotation-runtime">(() => {
+  'use strict';
+  const DOC_ID = 'backer-bluefocus-comm-v1';
+  const STORAGE_KEY = 'backer.reader.annotations.' + DOC_ID;
+  const COLORS = {yellow:'#fff0a8',green:'#bceccf',blue:'#bddfff',pink:'#ffcddd',purple:'#dfceff'};
+  const NAMES = {yellow:'黄色',green:'绿色',blue:'蓝色',pink:'粉色',purple:'紫色'};
+  const pages = [...document.querySelectorAll('main > .page')];
+  if (!pages.length || document.querySelector('.annotation-tools')) return;
+  const clamp = (n, min, max) => Math.max(min, Math.min(max, n));
+  const uid = () => 'a-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 10);
+  const copy = value => JSON.parse(JSON.stringify(value));
+  const el = (tag, cls, text) => { const n=document.createElement(tag);if(cls)n.className=cls;if(text!==undefined)n.textContent=text;return n; };
+  const button = (label, cls, action) => {const b=el('button',cls,label);b.type='button';if(action)b.addEventListener('click',action);return b;};
+  const closest = (target, selector) => target?.closest?.(selector) || target?.parentElement?.closest(selector);
+  const contentByPage = new Map();
+  const layers = new Map();
+  let chosenColor='yellow', savedSelection=[], activeHighlight=null, placing=false, hidden=false;
+  let undoStack=[], storageOK=true, inputTransaction=null, drag=null, noticeTimer;
+  const emptyState = () => ({version:1,documentId:DOC_ID,updatedAt:0,highlights:[],notes:[]});
+  function validate(raw) {
+    if (!raw || raw.documentId!==DOC_ID || raw.version!==1) return null;
+    const result=emptyState();result.updatedAt=Number(raw.updatedAt)||0;
+    result.highlights=(Array.isArray(raw.highlights)?raw.highlights:[]).filter(h=>h && typeof h.id==='string' && typeof h.page==='string' && typeof h.quote==='string' && h.quote.length && Number.isInteger(h.start) && Number.isInteger(h.end) && h.end>h.start && COLORS[h.color]).map(h=>({...h,prefix:String(h.prefix||''),suffix:String(h.suffix||'')}));
+    result.notes=(Array.isArray(raw.notes)?raw.notes:[]).filter(n=>n && typeof n.id==='string' && typeof n.page==='string' && typeof n.text==='string').map(n=>({...n,x:clamp(Number(n.x)||0,0,1),y:clamp(Number(n.y)||0,0,1),width:clamp(Number(n.width)||260,160,700),height:clamp(Number(n.height)||160,104,900),color:COLORS[n.color]?n.color:'yellow'}));
+    return result;
+  }
+  let embedded=null,stored=null;
+  try {embedded=validate(JSON.parse(document.getElementById('backer-annotation-data')?.textContent||'null'));} catch {}
+  try {stored=validate(JSON.parse(localStorage.getItem(STORAGE_KEY)||'null'));} catch {storageOK=false;}
+  let state=(stored && (!embedded || stored.updatedAt>=embedded.updatedAt)?stored:embedded)||emptyState();
+  let lastSaved=copy(state);
+  for (const page of pages) {
+    const content=el('div','annotation-content');
+    for(const child of [...page.childNodes]) if(!(child.nodeType===1 && child.classList.contains('page-footer')))content.append(child);
+    page.prepend(content);contentByPage.set(page.id,content);
+    const layer=el('div','annotation-layer');layer.dataset.annotationUi='true';page.append(layer);layers.set(page.id,layer);
+  }
+  const tools=el('div','annotation-tools');tools.dataset.annotationUi='true';tools.setAttribute('role','toolbar');tools.setAttribute('aria-label','阅读批注工具');
+  tools.append(el('span','annotation-label','批注'));
+  const palette=el('div','annotation-palette');tools.append(palette);
+  const colorButtons=[];
+  for(const color of Object.keys(COLORS)){
+    const b=button('', 'annotation-color',()=>{chosenColor=color;updateColors();applyHighlight(color);});
+    b.style.setProperty('--annotation-color',COLORS[color]);b.setAttribute('aria-label',NAMES[color]+'高亮');b.title='选中文字后，标为'+NAMES[color];
+    b.addEventListener('pointerdown',e=>e.preventDefault());palette.append(b);colorButtons.push([b,color]);
+  }
+  const placeButton=button('＋ 文本框','',()=>setPlacing(!placing));placeButton.id='annotation-add-note';placeButton.setAttribute('aria-pressed','false');tools.append(placeButton);
+  const undoButton=button('撤销','',undo);undoButton.id='annotation-undo';tools.append(undoButton);
+  const hideButton=button('隐藏批注','',()=>{hidden=!hidden;document.body.classList.toggle('annotation-hidden',hidden);hideButton.textContent=hidden?'显示批注':'隐藏批注';hideButton.setAttribute('aria-pressed',String(hidden));});hideButton.id='annotation-toggle';tools.append(hideButton);
+  const exportButton=button('下载批注版','',exportHTML);exportButton.id='annotation-export';tools.append(exportButton);
+  const status=el('span','annotation-status');status.setAttribute('role','status');status.setAttribute('aria-live','polite');tools.append(status);
+  document.querySelector('header').append(tools);
+  const popup=el('div','annotation-popover');popup.dataset.annotationUi='true';popup.hidden=true;popup.setAttribute('role','toolbar');popup.setAttribute('aria-label','选中文字的高亮颜色');
+  const popupLabel=el('span','annotation-popup-label','高亮');popup.append(popupLabel);
+  const popupPalette=el('div','annotation-palette');popup.append(popupPalette);
+  for(const color of Object.keys(COLORS)){
+    const b=button('','annotation-color',()=>{chosenColor=color;updateColors();applyHighlight(color);});b.style.setProperty('--annotation-color',COLORS[color]);b.setAttribute('aria-label',NAMES[color]+'高亮');b.title=NAMES[color];popupPalette.append(b);
+  }
+  const eraseButton=button('移除','',removeHighlight);eraseButton.setAttribute('aria-label','移除高亮');popup.append(eraseButton);
+  popup.addEventListener('pointerdown',e=>e.preventDefault());document.body.append(popup);
+  const notice=el('div','annotation-notice');notice.hidden=true;notice.dataset.annotationUi='true';notice.setAttribute('role','status');document.body.append(notice);
+  function notify(text){notice.textContent=text;notice.hidden=false;clearTimeout(noticeTimer);noticeTimer=setTimeout(()=>notice.hidden=true,2600);}
+  function updateColors(){for(const [b,color] of colorButtons)b.setAttribute('aria-pressed',String(color===chosenColor));}
+  function updateStatus(){status.textContent=placing?'点击页面放置文本框 · Esc 取消':storageOK?'自动保存在此浏览器':'浏览器无法保存，请下载批注版';undoButton.disabled=!undoStack.length;}
+  function syncFromStorage(){
+    let remote;try{remote=validate(JSON.parse(localStorage.getItem(STORAGE_KEY)||'null'));}catch{return;}
+    if(!remote || remote.updatedAt<=lastSaved.updatedAt)return;
+    for(const collection of ['highlights','notes']){
+      const base=new Map(lastSaved[collection].map(x=>[x.id,x])),local=new Map(state[collection].map(x=>[x.id,x])),other=new Map(remote[collection].map(x=>[x.id,x]));const merged=[];
+      for(const id of new Set([...local.keys(),...other.keys(),...base.keys()])){
+        const current=local.get(id),previous=base.get(id),incoming=other.get(id);
+        const locallyChanged=JSON.stringify(current)!==JSON.stringify(previous);const chosen=locallyChanged?current:incoming;
+        if(chosen){if(current){Object.assign(current,chosen);merged.push(current);}else merged.push(copy(chosen));}
+      }
+      state[collection]=merged;
+    }
+    lastSaved=copy(remote);state.updatedAt=Math.max(state.updatedAt,remote.updatedAt);undoStack=[];
+    for(const page of pages)renderHighlights(page.id);
+    for(const [pageId,layer] of layers){for(const card of [...layer.children]){const note=state.notes.find(n=>n.id===card.dataset.noteId);if(!note)card.remove();else if(!card.contains(document.activeElement)){card.remove();renderNote(note);}else noteBox(note,card);}for(const note of state.notes.filter(n=>n.page===pageId))if(![...layer.children].some(card=>card.dataset.noteId===note.id))renderNote(note);}
+    updateStatus();
+  }
+  function save(){syncFromStorage();state.updatedAt=Math.max(Date.now(),state.updatedAt+1,lastSaved.updatedAt+1);try{localStorage.setItem(STORAGE_KEY,JSON.stringify(state));lastSaved=copy(state);storageOK=true;}catch{storageOK=false;}updateStatus();document.dispatchEvent(new CustomEvent('backer:annotations-change',{detail:copy(state)}));}
+  function checkpoint(){undoStack.push(copy(state));if(undoStack.length>60)undoStack.shift();updateStatus();}
+  function undo(){if(!undoStack.length)return;state=undoStack.pop();inputTransaction=null;renderAll();save();notify('已撤销上一步批注');}
+  function textNodes(root){const list=[],walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);let n;while((n=walker.nextNode()))list.push(n);return list;}
+  function getSelectionParts(){
+    const selection=window.getSelection();if(!selection || selection.isCollapsed || !selection.rangeCount)return [];
+    const range=selection.getRangeAt(0);const parts=[];
+    for(const [page,root] of contentByPage){
+      let offset=0,start=null,end=null;
+      for(const node of textNodes(root)){
+        const len=node.length;
+        if(range.intersectsNode(node)){
+          const a=range.startContainer===node?range.startOffset:0,b=range.endContainer===node?range.endOffset:len;
+          if(b>a){if(start===null)start=offset+a;end=offset+b;}
+        }
+        offset+=len;
+      }
+      if(start!==null && end>start){const text=root.textContent;parts.push({page,start,end,quote:text.slice(start,end),prefix:text.slice(Math.max(0,start-32),start),suffix:text.slice(end,end+32)});}
+    }
+    return parts;
+  }
+  function locate(h){
+    const root=contentByPage.get(h.page);if(!root)return null;const text=root.textContent;
+    if(text.slice(h.start,h.end)===h.quote)return {...h};
+    let best=-1,bestScore=-1,cursor=0;
+    while(cursor<=text.length){const at=text.indexOf(h.quote,cursor);if(at<0)break;let score=0;if(h.prefix && text.slice(Math.max(0,at-h.prefix.length),at)===h.prefix)score+=2;if(h.suffix && text.slice(at+h.quote.length,at+h.quote.length+h.suffix.length)===h.suffix)score+=2;if(score>bestScore){bestScore=score;best=at;}cursor=at+1;}
+    return best>=0?{...h,start:best,end:best+h.quote.length}:null;
+  }
+  function unwrap(root){for(const mark of [...root.querySelectorAll('mark.annotation-highlight')])mark.replaceWith(...mark.childNodes);root.normalize();}
+  function renderHighlights(pageId){
+    const root=contentByPage.get(pageId);unwrap(root);
+    const ranges=state.highlights.filter(h=>h.page===pageId).map(locate).filter(Boolean);
+    let offset=0;
+    for(const node of textNodes(root)){
+      const start=offset,end=offset+node.length;offset=end;const intersects=ranges.filter(h=>h.start<end && h.end>start);if(!intersects.length)continue;
+      const cuts=[0,node.length,...intersects.flatMap(h=>[clamp(h.start-start,0,node.length),clamp(h.end-start,0,node.length)])].sort((a,b)=>a-b);
+      const points=[...new Set(cuts)],fragment=document.createDocumentFragment();
+      for(let i=0;i<points.length-1;i++){
+        const a=points[i],b=points[i+1];const matching=intersects.filter(h=>h.start<=start+a && h.end>=start+b);const latest=matching[matching.length-1];
+        if(latest){const mark=el('mark','annotation-highlight',node.data.slice(a,b));mark.dataset.highlightId=latest.id;mark.style.setProperty('--highlight-color',COLORS[latest.color]);mark.title='点击改色或移除高亮';fragment.append(mark);}else fragment.append(document.createTextNode(node.data.slice(a,b)));
+      }
+      node.replaceWith(fragment);
+    }
+  }
+  function showPopup(rect){
+    popup.hidden=false;eraseButton.hidden=!activeHighlight && !savedSelection.some(s=>state.highlights.some(h=>h.page===s.page && h.start<s.end && h.end>s.start));
+    const width=popup.offsetWidth||290,height=popup.offsetHeight||50;
+    popup.style.left=clamp(rect.left+rect.width/2-width/2,8,Math.max(8,window.innerWidth-width-8))+'px';
+    const top=rect.top-height-9;popup.style.top=clamp(top>8?top:rect.bottom+9,8,Math.max(8,window.innerHeight-height-8))+'px';
+  }
+  function captureSelection(){
+    if(placing || document.activeElement?.closest('.annotation-note'))return;
+    const parts=getSelectionParts();if(!parts.length){if(!activeHighlight){popup.hidden=true;savedSelection=[];}return;}
+    activeHighlight=null;savedSelection=parts;const range=window.getSelection().getRangeAt(0);showPopup(range.getBoundingClientRect());
+  }
+  function applyHighlight(color){
+    if(hidden)hideButton.click();
+    if(activeHighlight){checkpoint();const h=state.highlights.find(h=>h.id===activeHighlight);if(h)h.color=color;}
+    else {
+      const parts=getSelectionParts();if(parts.length)savedSelection=parts;
+      if(!savedSelection.length){notify('先选中文字，再选择高亮颜色');return;}
+      checkpoint();for(const part of savedSelection){subtractRange(part);state.highlights.push({...part,id:uid(),color});}
+    }
+    for(const page of pages)renderHighlights(page.id);window.getSelection()?.removeAllRanges();savedSelection=[];activeHighlight=null;popup.hidden=true;save();
+  }
+  function subtractRange(part){
+    state.highlights=state.highlights.flatMap(original=>{
+      if(original.page!==part.page)return [original];const h=locate(original);if(!h || h.end<=part.start || h.start>=part.end)return [original];
+      const text=contentByPage.get(h.page).textContent;const pieces=[];
+      for(const [start,end] of [[h.start,Math.min(h.end,part.start)],[Math.max(h.start,part.end),h.end]])if(end>start)pieces.push({...h,id:uid(),start,end,quote:text.slice(start,end),prefix:text.slice(Math.max(0,start-32),start),suffix:text.slice(end,end+32)});
+      return pieces;
+    });
+  }
+  function removeHighlight(){
+    const ids=activeHighlight?[activeHighlight]:state.highlights.filter(h=>savedSelection.some(s=>h.page===s.page && h.start<s.end && h.end>s.start)).map(h=>h.id);
+    if(!ids.length)return;checkpoint();if(activeHighlight)state.highlights=state.highlights.filter(h=>!ids.includes(h.id));else for(const part of savedSelection)subtractRange(part);for(const page of pages)renderHighlights(page.id);window.getSelection()?.removeAllRanges();savedSelection=[];activeHighlight=null;popup.hidden=true;save();
+  }
+  function setPlacing(value){placing=value;document.body.classList.toggle('annotation-placing',placing);placeButton.setAttribute('aria-pressed',String(placing));placeButton.textContent=placing?'取消放置':'＋ 文本框';popup.hidden=true;savedSelection=[];activeHighlight=null;window.getSelection()?.removeAllRanges();if(placing && hidden)hideButton.click();updateStatus();}
+  function noteBox(note,element){
+    const page=document.getElementById(note.page);if(!page)return;
+    const width=clamp(note.width,Math.min(160,page.clientWidth-16),Math.max(160,page.clientWidth-16));const height=note.height;
+    element.style.width=width+'px';element.style.height=height+'px';
+    element.style.left=clamp(note.x*page.clientWidth,8,Math.max(8,page.clientWidth-width-8))+'px';element.style.top=clamp(note.y*page.clientHeight,8,Math.max(8,page.clientHeight-height-8))+'px';element.style.setProperty('--note-color',COLORS[note.color]);
+  }
+  function renderNote(note){
+    const layer=layers.get(note.page);if(!layer)return;const card=el('aside','annotation-note');card.dataset.noteId=note.id;card.setAttribute('aria-label','第 '+note.page.slice(1)+' 页批注');
+    const head=el('div','annotation-note-head');const handle=el('span','annotation-note-handle','⠿ 拖动');handle.tabIndex=0;handle.setAttribute('role','button');handle.setAttribute('aria-label','移动批注，使用方向键');head.append(handle);
+    const color=button('','annotation-note-color',()=>{checkpoint();const colors=Object.keys(COLORS);note.color=colors[(colors.indexOf(note.color)+1)%colors.length];noteBox(note,card);color.title='批注颜色：'+NAMES[note.color]+'，点击切换';save();});color.title='批注颜色：'+NAMES[note.color]+'，点击切换';color.setAttribute('aria-label','切换批注颜色');head.append(color);
+    const remove=button('×','',()=>{checkpoint();state.notes=state.notes.filter(n=>n.id!==note.id);card.remove();save();notify('已删除批注，可撤销');});remove.title='删除文本框';remove.setAttribute('aria-label','删除文本框');head.append(remove);card.append(head);
+    const input=el('textarea');input.value=note.text;input.placeholder='在这里写批注…';input.setAttribute('aria-label','批注内容');input.spellcheck=false;card.append(input);
+    input.addEventListener('focus',()=>inputTransaction=null);
+    input.addEventListener('input',()=>{if(inputTransaction!==note.id){checkpoint();inputTransaction=note.id;}note.text=input.value;save();});
+    input.addEventListener('blur',()=>inputTransaction=null);
+    const resize=button('','annotation-note-resize');resize.setAttribute('aria-label','调整文本框大小，拖动或使用方向键');resize.title='拖动调整大小';card.append(resize);
+    head.addEventListener('pointerdown',e=>{if(e.target.closest('button'))return;beginDrag(e,note,card,'move');});resize.addEventListener('pointerdown',e=>beginDrag(e,note,card,'resize'));
+    for(const [target,type] of [[handle,'move'],[resize,'resize']])target.addEventListener('keydown',e=>{
+      if(!['ArrowLeft','ArrowRight','ArrowUp','ArrowDown'].includes(e.key))return;e.preventDefault();e.stopPropagation();checkpoint();const step=e.shiftKey?20:5,page=document.getElementById(note.page);const dx=e.key==='ArrowRight'?step:e.key==='ArrowLeft'?-step:0,dy=e.key==='ArrowDown'?step:e.key==='ArrowUp'?-step:0;
+      if(type==='move'){note.x=clamp(note.x+dx/page.clientWidth,0,1);note.y=clamp(note.y+dy/page.clientHeight,0,1);}else{note.width=clamp(note.width+dx,160,700);note.height=clamp(note.height+dy,104,900);}noteBox(note,card);save();
+    });
+    layer.append(card);noteBox(note,card);return input;
+  }
+  function beginDrag(e,note,card,type){
+    if(e.button!==0)return;e.preventDefault();e.stopPropagation();checkpoint();const page=document.getElementById(note.page),rect=card.getBoundingClientRect(),pageRect=page.getBoundingClientRect();drag={note,card,type,pointer:e.pointerId,startX:e.clientX,startY:e.clientY,startLeft:rect.left-pageRect.left,startTop:rect.top-pageRect.top,width:rect.width,height:rect.height,page};card.style.zIndex='40';try{e.currentTarget.setPointerCapture(e.pointerId);}catch{}
+  }
+  document.addEventListener('pointermove',e=>{
+    if(!drag || e.pointerId!==drag.pointer)return;e.preventDefault();const d=drag,dx=e.clientX-d.startX,dy=e.clientY-d.startY;
+    if(d.type==='move'){d.note.x=clamp(d.startLeft+dx,8,Math.max(8,d.page.clientWidth-d.width-8))/d.page.clientWidth;d.note.y=clamp(d.startTop+dy,8,Math.max(8,d.page.clientHeight-d.height-8))/d.page.clientHeight;}
+    else {d.note.width=clamp(d.width+dx,160,Math.min(700,d.page.clientWidth-d.startLeft-8));d.note.height=clamp(d.height+dy,104,Math.min(900,d.page.clientHeight-d.startTop-8));}noteBox(d.note,d.card);
+  },{passive:false});
+  function endDrag(){if(!drag)return;drag.card.style.zIndex='';drag=null;save();}document.addEventListener('pointerup',endDrag);document.addEventListener('pointercancel',endDrag);
+  window.addEventListener('storage',e=>{if(e.key===STORAGE_KEY && !drag && !document.activeElement?.closest('.annotation-note') && window.getSelection()?.isCollapsed!==false){syncFromStorage();notify('已同步其他窗口的批注');}});
+  document.addEventListener('click',e=>{
+    if(closest(e.target,'[data-annotation-ui]'))return;
+    const page=closest(e.target,'.page');
+    if(placing && page){e.preventDefault();e.stopPropagation();checkpoint();const rect=page.getBoundingClientRect();const note={id:uid(),page:page.id,x:clamp((e.clientX-rect.left)/rect.width,0,1),y:clamp((e.clientY-rect.top)/rect.height,0,1),width:260,height:160,text:'',color:chosenColor};state.notes.push(note);setPlacing(false);const input=renderNote(note);save();input?.focus({preventScroll:true});return;}
+    const mark=closest(e.target,'mark.annotation-highlight');
+    if(!hidden && mark && window.getSelection()?.isCollapsed){e.preventDefault();e.stopPropagation();activeHighlight=mark.dataset.highlightId;savedSelection=[];showPopup(mark.getBoundingClientRect());}
+    else if(window.getSelection()?.isCollapsed){activeHighlight=null;savedSelection=[];popup.hidden=true;}
+  },true);
+  document.addEventListener('pointerup',e=>{if(!closest(e.target,'[data-annotation-ui]')&&!drag)setTimeout(captureSelection,0);});
+  document.addEventListener('keyup',e=>{if(e.key.startsWith('Arrow')||e.key==='Shift')captureSelection();});
+  document.addEventListener('keydown',e=>{
+    if(e.key==='Escape'){setPlacing(false);popup.hidden=true;activeHighlight=null;}
+    if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='z'&&!closest(e.target,'input,textarea,[contenteditable="true"]')){e.preventDefault();undo();}
+  });
+  window.addEventListener('scroll',()=>popup.hidden=true,{passive:true});
+  function renderAll(){for(const page of pages){renderHighlights(page.id);layers.get(page.id).replaceChildren();}for(const note of state.notes)renderNote(note);updateStatus();}
+  function exportHTML(){
+    save();const clone=document.documentElement.cloneNode(true);
+    for(const ui of clone.querySelectorAll('[data-annotation-ui]'))ui.remove();
+    for(const mark of clone.querySelectorAll('mark.annotation-highlight'))mark.replaceWith(...mark.childNodes);
+    for(const content of clone.querySelectorAll('.annotation-content'))content.replaceWith(...content.childNodes);
+    clone.querySelector('body').classList.remove('annotation-placing','annotation-hidden');
+    const data=clone.querySelector('#backer-annotation-data');data.textContent=JSON.stringify(state).replace(/</g,'\\u003c');
+    const blob=new Blob(['<!doctype html>\n'+clone.outerHTML],{type:'text/html;charset=utf-8'});const url=URL.createObjectURL(blob);const link=el('a');link.href=url;link.download='Backer-BlueFocus-CVC-批注版-'+new Date().toISOString().slice(0,10)+'.html';document.body.append(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);notify('已下载带批注的完整 HTML');
+  }
+  const reposition=()=>{for(const note of state.notes){const card=layers.get(note.page)?.querySelector('[data-note-id="'+CSS.escape(note.id)+'"]');if(card)noteBox(note,card);}const header=document.querySelector('header');document.documentElement.style.scrollPaddingTop=(header.offsetHeight+18)+'px';for(const page of pages)page.style.scrollMarginTop='0px';};
+  if(typeof ResizeObserver!=='undefined'){const observer=new ResizeObserver(reposition);for(const page of pages)observer.observe(page);observer.observe(document.querySelector('header'));}else window.addEventListener('resize',reposition);
+  window.BackerAnnotations={
+    snapshot:()=>copy(state),
+    replaceShared(value){const incoming=validate(value);if(!incoming)return false;state=incoming;lastSaved=copy(state);undoStack=[];renderAll();try{localStorage.setItem(STORAGE_KEY,JSON.stringify(state));}catch{}return true;},
+    refreshAnchors(){for(const page of pages)renderHighlights(page.id);},
+    refreshLayout:reposition
+  };
+  updateColors();renderAll();reposition();updateStatus();
+  document.dispatchEvent(new CustomEvent('backer:annotations-ready'));
+})();
+</script><script id="backer-comm-runtime">(() => {
+  'use strict';
+  if(location.protocol==='file:')return;
+  const API=window.__BACKER_COMM__.api;
+  const DOC='backer-bluefocus-comm-v1',LEGACY_DOC='backer-bluefocus-cvc-meeting-v3';
+  const PREFIX='backer.comm.'+DOC+'.',CACHE=PREFIX+'snapshot',PENDING=PREFIX+'pending',NAME=PREFIX+'name',OPERATION=PREFIX+'operation',RECOVERY=PREFIX+'recovery';
+  const $=s=>document.querySelector(s),clone=x=>JSON.parse(JSON.stringify(x));
+  const el=(tag,cls,text)=>{const n=document.createElement(tag);if(cls)n.className=cls;if(text!==undefined)n.textContent=text;return n;};
+  const btn=(text,action,cls='')=>{const n=el('button',cls,text);n.type='button';n.addEventListener('click',action);return n;};
+  const read=(key,fallback)=>{try{return JSON.parse(localStorage.getItem(key))||fallback;}catch{return fallback;}};
+  const store=(key,value)=>{try{localStorage.setItem(key,JSON.stringify(value));}catch{}};
+  const canonical=value=>value&&typeof value==='object'?(Array.isArray(value)?value.map(canonical):Object.fromEntries(Object.keys(value).sort().map(key=>[key,canonical(value[key])]))):value;
+  const equal=(a,b)=>JSON.stringify(canonical(a))===JSON.stringify(canonical(b));
+  const newId=()=>crypto.randomUUID?.()||Date.now().toString(36)+'-'+Math.random().toString(36).slice(2);
+  let items={},revision=0,connected=false,saving=false,pulling=false,editing=false,suppress=false,etag='',flushTimer,pollTimer,toastTimer,loaded=false;
+  const pending=new Map(read(PENDING,[]));
+  const conflicts=new Map();
+  const dirtyPages=new Set();
+  let annotationBaseline=window.BackerAnnotations.snapshot();
+  // These are versions actually shown to the editor, not merely fetched versions.
+  const renderedVersions=new Map();
+  const recoveries=new Map(read(RECOVERY,[]));
+  let queuedOperation=read(OPERATION,null);
+  if(!queuedOperation?.operationId||!Array.isArray(queuedOperation.updates))queuedOperation=null;
+  if(queuedOperation)for(const update of queuedOperation.updates)if(!pending.has(update.id))pending.set(update.id,clone(update));
+  // Keep unsubmitted annotations separately until the shared snapshot is known.
+  // They never become writes implicitly, including when the server has a tombstone.
+  for(const [key,kind] of [['notes','note'],['highlights','highlight']])for(const data of annotationBaseline[key]||[]){const id=kind+':'+data.id;if(!pending.has(id)&&!recoveries.has(id))recoveries.set(id,{kind,data:clone(data),reason:'等待核对共享版本'});}
+  store(RECOVERY,[...recoveries]);
+  const pageBodies=new Map([...document.querySelectorAll('.page')].map(p=>[p.id,p.querySelector('.reader-body')]));
+  const baseBodies=new Map([...pageBodies].map(([id,b])=>[id,b.innerHTML]));
+  const bar=el('div','comm-bar');bar.dataset.annotationUi='true';bar.setAttribute('role','toolbar');bar.setAttribute('aria-label','共享文档编辑');
+  const editButton=btn('编辑正文',()=>toggleEdit(), 'primary');editButton.id='comm-edit';bar.append(editButton);
+  const historyButton=btn('版本记录',()=>showHistory());historyButton.id='comm-history';bar.append(historyButton);
+  const shareButton=btn('复制分享链接',copyLink);shareButton.id='comm-share';bar.append(shareButton);
+  const importButton=btn('导入本地批注',()=>importFile.click());importButton.id='comm-import';bar.append(importButton);
+  const recoveryButton=btn('本机批注',()=>showRecovery());recoveryButton.id='comm-recovery';bar.append(recoveryButton);
+  const name=el('input');name.placeholder='你的名字（可选）';name.value=read(NAME,'');name.maxLength=40;name.setAttribute('aria-label','修改者名字');name.addEventListener('change',()=>store(NAME,name.value.trim()));bar.append(name);
+  bar.append(el('span','comm-label','持有链接即可编辑'));
+  const status=el('span','comm-status','正在连接共享文档…');status.setAttribute('role','status');status.setAttribute('aria-live','polite');bar.append(status);$('header').append(bar);
+  const importFile=el('input');importFile.type='file';importFile.accept='.html,.json';importFile.hidden=true;importFile.dataset.annotationUi='true';document.body.append(importFile);
+  const dialog=el('dialog','comm-dialog');dialog.dataset.annotationUi='true';document.body.append(dialog);
+  const toast=el('div','comm-toast');toast.dataset.annotationUi='true';toast.hidden=true;toast.setAttribute('role','status');document.body.append(toast);
+  function notify(message){toast.textContent=message;toast.hidden=false;clearTimeout(toastTimer);toastTimer=setTimeout(()=>toast.hidden=true,3600);}
+  function setStatus(message,state=''){status.textContent=message;status.dataset.state=state;}
+  function updateStatus(){
+    recoveryButton.hidden=!recoveries.size;recoveryButton.textContent='本机保留批注（'+recoveries.size+'）';
+    if(conflicts.size){setStatus('有 '+conflicts.size+' 处编辑冲突 · 点击处理','error');status.style.cursor='pointer';return;}
+    status.style.cursor='default';
+    if(!connected){setStatus(pending.size?'暂未同步 · 修改已在本机保留':'离线阅读 · 连接后同步','error');return;}
+    if(saving || pending.size){setStatus('正在保存…');return;}
+    setStatus('已同步 · 版本 '+revision,'saved');
+  }
+  status.addEventListener('click',()=>{if(conflicts.size)showConflict([...conflicts.keys()][0]);});
+  const cleanHtml=html=>{
+    const tpl=document.createElement('template');tpl.innerHTML=html;
+    for(const node of [...tpl.content.querySelectorAll('script,style,iframe,object,embed,svg,math,form,input,textarea,button,[data-annotation-ui]')])node.remove();
+    for(const mark of [...tpl.content.querySelectorAll('mark.annotation-highlight')])mark.replaceWith(...mark.childNodes);
+    const allowed=new Set(['P','BR','B','STRONG','I','EM','U','S','UL','OL','LI','TABLE','THEAD','TBODY','TR','TH','TD','BLOCKQUOTE','H2','H3','H4','A','SPAN','DIV','CODE','PRE','DETAILS','SUMMARY','HR']);
+    for(const n of [...tpl.content.querySelectorAll('*')]){
+      if(!allowed.has(n.tagName)){n.replaceWith(...n.childNodes);continue;}
+      for(const a of [...n.attributes]){
+        const safeClass=a.name==='class' && /^(reader-detail|reader-sources|reader-retained|reader-retained-label|source-note|table-wrap)$/.test(a.value);
+        const safeLink=n.tagName==='A' && a.name==='href' && /^(https?:\/\/|#p\d+$)/i.test(a.value);
+        const safeSpan=['TD','TH'].includes(n.tagName) && ['colspan','rowspan'].includes(a.name) && /^\d{1,2}$/.test(a.value);
+        if(!safeClass&&!safeLink&&!safeSpan&&!(n.tagName==='DETAILS'&&a.name==='open'))n.removeAttribute(a.name);
+      }
+    }
+    return tpl.innerHTML;
+  };
+  function currentBody(id){return cleanHtml(pageBodies.get(id).innerHTML);}
+  function persistPending(){store(PENDING,[...pending]);}
+  function persistOperation(){store(OPERATION,queuedOperation);}
+  function queue(id,kind,data){
+    const previous=pending.get(id);if(!previous&&equal(items[id]?.data,data)){dirtyPages.delete(id);renderedVersions.set(id,items[id]?.version||0);return;}const entry={id,kind,data,baseVersion:previous?.baseVersion??renderedVersions.get(id)??0};
+    pending.set(id,entry);persistPending();updateStatus();clearTimeout(flushTimer);flushTimer=setTimeout(flush,800);
+  }
+  function setPage(id,html){
+    const body=pageBodies.get(id);if(!body)return;body.innerHTML=cleanHtml(html);window.BackerAnnotations.refreshAnchors();
+  }
+  function annotationStateFromItems(){
+    return {version:1,documentId:DOC,updatedAt:Date.now(),notes:[],highlights:[],...Object.values(items).reduce((acc,item)=>{if(!item.deleted&&item.data){if(item.kind==='note')acc.notes.push(item.data);if(item.kind==='highlight')acc.highlights.push(item.data);}return acc;},{notes:[],highlights:[]})};
+  }
+  function mergePendingAnnotations(snapshot){
+    for(const change of pending.values()){
+      if(!['note','highlight'].includes(change.kind))continue;const key=change.kind==='note'?'notes':'highlights';
+      const uid=change.id.replace(/^(note|highlight):/,'');snapshot[key]=snapshot[key].filter(n=>n.id!==uid);if(change.data)snapshot[key].push(change.data);
+    }
+    return snapshot;
+  }
+  function applyAnnotations(force=false){
+    if(!force&&(document.activeElement?.closest('.annotation-note') || editing))return;
+    const snapshot=mergePendingAnnotations(annotationStateFromItems());
+    const current=window.BackerAnnotations.snapshot();
+    // An unchanged poll must not clear selection, note focus or the undo stack.
+    if(!equal(current.notes,snapshot.notes)||!equal(current.highlights,snapshot.highlights)){
+      suppress=true;try{window.BackerAnnotations.replaceShared(snapshot);}finally{suppress=false;}
+    }
+    annotationBaseline=clone(snapshot);
+    for(const item of Object.values(items))if(['note','highlight'].includes(item.kind)&&!pending.has(item.id))renderedVersions.set(item.id,item.version);
+  }
+  function applySnapshot(snapshot,{force=false,authoritative=false}={}){
+    if(!snapshot || !snapshot.items || Number(snapshot.revision)<revision)return false;items=snapshot.items;revision=Number(snapshot.revision)||0;store(CACHE,snapshot);
+    if(authoritative){
+      for(const [id,entry] of recoveries){const remote=items[id];if(equal(remote?.data,entry.data)||pending.has(id))recoveries.delete(id);else entry.reason=remote?.deleted?'共享文档中已删除':remote?'共享文档中有另一版本':'尚未加入共享文档';}
+      store(RECOVERY,[...recoveries]);
+    }
+    for(const [id,body] of pageBodies){
+      if(pending.has(id)||dirtyPages.has(id)||(!force&&editing&&body.contains(document.activeElement)))continue;
+      const item=items[id],html=item&&!item.deleted?item.data?.html:baseBodies.get(id);
+      if(typeof html==='string' && currentBody(id)!==cleanHtml(html))setPage(id,html);
+      renderedVersions.set(id,item?.version||0);
+    }
+    applyAnnotations(force);window.BackerAnnotations.refreshLayout();return true;
+  }
+  function toggleEdit(){
+    if(!loaded){notify('共享文档正在连接，请稍后再编辑正文');return;}
+    editing=!editing;document.body.classList.toggle('comm-editing',editing);editButton.textContent=editing?'完成编辑':'编辑正文';editButton.setAttribute('aria-pressed',String(editing));
+    for(const [id,body] of pageBodies){body.contentEditable=String(editing);body.spellcheck=false;if(!editing&&dirtyPages.has(id))queue(id,'page',{html:currentBody(id)});}
+    if(editing)notify('直接点击正文修改；修改会同步给所有持链接的人。');else {applyAnnotations();flush();}
+    window.BackerAnnotations.refreshLayout();
+  }
+  for(const [id,body] of pageBodies){
+    const hint=el('span','page-edit-hint','正文可编辑 · 自动保存');hint.dataset.annotationUi='true';body.closest('.page').append(hint);
+    body.addEventListener('input',()=>{dirtyPages.add(id);queue(id,'page',{html:currentBody(id)});});
+    body.addEventListener('paste',e=>{
+      if(!editing)return;e.preventDefault();const text=e.clipboardData.getData('text/plain');const selection=window.getSelection();if(!selection?.rangeCount)return;const range=selection.getRangeAt(0);range.deleteContents();const fragment=document.createDocumentFragment();for(const [i,line] of text.split('\n').entries()){if(i)fragment.append(document.createElement('br'));fragment.append(document.createTextNode(line));}const last=fragment.lastChild;range.insertNode(fragment);if(last){range.setStartAfter(last);range.collapse(true);selection.removeAllRanges();selection.addRange(range);}body.dispatchEvent(new Event('input',{bubbles:true}));
+    });
+    body.addEventListener('blur',()=>{if(dirtyPages.has(id))queue(id,'page',{html:currentBody(id)});},true);
+  }
+  document.addEventListener('backer:annotations-change',e=>{
+    if(suppress)return;const snapshot=e.detail;
+    for(const [key,kind] of [['notes','note'],['highlights','highlight']]){
+      const before=new Map((annotationBaseline[key]||[]).map(x=>[x.id,x])),after=new Map((snapshot[key]||[]).map(x=>[x.id,x]));
+      for(const id of new Set([...before.keys(),...after.keys()]))if(!equal(before.get(id),after.get(id)))queue(kind+':'+id,kind,after.get(id)||null);
+    }
+    annotationBaseline=clone(snapshot);
+  });
+  async function request(method='GET',body=null){
+    const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),12000);
+    try{return await fetch(API,{method,headers:{...(body?{'Content-Type':'application/json'}:{}),...(method==='GET'&&etag?{'If-None-Match':etag}:{})},body:body?JSON.stringify(body):undefined,cache:'no-store',signal:controller.signal});}finally{clearTimeout(timer);}
+  }
+  async function pull(){
+    if(saving||pulling)return;pulling=true;try{const response=await request();if(response.status===304){connected=true;loaded=true;return;}
+      if(!response.ok)throw new Error('读取失败');const snapshot=await response.json();etag=response.headers.get('etag')||'';connected=true;loaded=true;applySnapshot(snapshot,{authoritative:true});
+    }catch{connected=false;}
+    finally{pulling=false;updateStatus();if(loaded&&connected&&(pending.size||queuedOperation)&&!conflicts.size)flush();}
+  }
+  async function flush(){
+    if(!loaded||saving||pulling||(!pending.size&&!queuedOperation)||conflicts.size)return;saving=true;updateStatus();
+    // Persist the complete request. A retry, even after refresh or renaming the
+    // actor, must use the same id AND payload before sending newer edits.
+    if(!queuedOperation){queuedOperation={operationId:newId(),actor:name.value.trim()||'访客',updates:[...pending.values()].slice(0,150).map(clone)};persistOperation();}
+    const operation=clone(queuedOperation),batch=operation.updates;
+    try{
+      const response=await request('POST',operation);const result=await response.json();
+      if(response.status===409){
+        queuedOperation=null;persistOperation();
+        if(result.items)applySnapshot(result,{authoritative:true});else if(result.current?.items)applySnapshot(result.current,{authoritative:true});
+        const serverConflicts=Array.isArray(result.conflicts)?result.conflicts:batch.filter(x=>(items[x.id]?.version||0)!==x.baseVersion).map(x=>x.id);
+        for(const c of serverConflicts){const id=typeof c==='string'?c:c.id;if(pending.has(id))conflicts.set(id,{local:clone(pending.get(id)),remote:items[id]||null});}
+        if(!conflicts.size)for(const item of batch)conflicts.set(item.id,{local:item,remote:items[item.id]||null});
+        connected=true;notify('其他人也修改了同一处。你的版本已保留，请选择如何合并。');return;
+      }
+      if(!response.ok)throw new Error(result.error||'保存失败');
+      for(const sent of batch){const current=pending.get(sent.id),acknowledgedVersion=sent.baseVersion+1;if(current&&equal(current.data,sent.data)){pending.delete(sent.id);dirtyPages.delete(sent.id);}else if(current){current.baseVersion=acknowledgedVersion;}renderedVersions.set(sent.id,acknowledgedVersion);}
+      connected=true;queuedOperation=null;persistOperation();persistPending();applySnapshot(result,{authoritative:true});etag='';
+    }catch{connected=false;notify('暂未同步。修改已保留在本机，恢复连接后会重试。');}
+    finally{saving=false;updateStatus();if((pending.size||queuedOperation)&&connected&&!conflicts.size)setTimeout(flush,350);}
+  }
+  function openDialog(){if(dialog.showModal)dialog.showModal();else dialog.setAttribute('open','');}
+  function closeDialog(){if(dialog.close)dialog.close();else dialog.removeAttribute('open');}
+  const plain=html=>{const d=document.createElement('div');d.innerHTML=cleanHtml(html);return d.textContent;};
+  function showConflict(id){
+    const conflict=conflicts.get(id);if(!conflict)return;dialog.replaceChildren(el('h2','','同一处有两份修改'),el('p','','你的修改还在。选择采用线上版本，或把自己的版本作为下一版保存。'));
+    const local=(pending.get(id)||conflict.local).data,remote=items[id]?.data;
+    for(const [label,data] of [['你的版本',local],['线上版本',remote]]){dialog.append(el('p','',label));const area=el('textarea');area.readOnly=true;area.value=data?.html?plain(data.html):data?.text||data?.quote||'已删除';dialog.append(area);}
+    dialog.append(btn('采用线上版本',()=>{pending.delete(id);dirtyPages.delete(id);conflicts.delete(id);persistPending();closeDialog();applySnapshot({items,revision},{force:true});updateStatus();}),btn('将我的修改另存为下一版',()=>{const change=pending.get(id);if(!change)return;change.baseVersion=items[id]?.version||0;conflicts.delete(id);queuedOperation=null;persistOperation();persistPending();closeDialog();flush();},'primary'),btn('稍后处理',closeDialog));openDialog();
+  }
+  function showRecovery(){
+    dialog.replaceChildren(el('h2','','本机保留的批注'),el('p','','这些内容保存在这台设备，没有覆盖共享版本。你可以另存一份；线上已删除的批注不会自动恢复。'));
+    for(const entry of recoveries.values()){const card=el('div','comm-history-item');card.append(el('small','',entry.reason+' · 第 '+entry.data.page.slice(1)+' 页'),el('pre','',entry.data.text||entry.data.quote||'空文本框'));dialog.append(card);}
+    dialog.append(btn('另存为新的共享批注',()=>{
+      if(!loaded){notify('连接成功后才能另存，共享版本不会被覆盖。');return;}
+      const current=window.BackerAnnotations.snapshot();
+      retainMissingQuotes([...recoveries.values()].filter(entry=>entry.kind==='highlight').map(entry=>entry.data));
+      for(const entry of recoveries.values()){const data={...clone(entry.data),id:'recovered-'+newId()},key=entry.kind==='note'?'notes':'highlights';current[key].push(data);queue(entry.kind+':'+data.id,entry.kind,data);}
+      recoveries.clear();store(RECOVERY,[]);suppress=true;try{window.BackerAnnotations.replaceShared(current);}finally{suppress=false;}annotationBaseline=clone(current);closeDialog();updateStatus();flush();
+    },'primary'),btn('保留在本机',closeDialog));openDialog();
+  }
+  async function showHistory(){
+    const pageId='p'+(document.querySelector('select')?.value||4);dialog.replaceChildren(el('h2','','第 '+pageId.slice(1)+' 页 · 修改记录'),el('p','','正在读取…'));openDialog();
+    try{const response=await fetch(API+'?history='+encodeURIComponent(pageId),{cache:'no-store'});if(!response.ok)throw new Error();const result=await response.json();const history=result.history||result.versions||[];dialog.replaceChildren(el('h2','','第 '+pageId.slice(1)+' 页 · 修改记录'));
+      if(!history.length)dialog.append(el('p','','这页还没有线上修改。'));
+      for(const item of history){const card=el('div','comm-history-item');card.append(el('small','','版本 '+(item.version??'')+' · '+(item.actor||'访客')+' · '+String(item.updatedAt||item.created_at||item.createdAt||'')));const preview=el('pre','',plain(item.data?.html||''));card.append(preview);if(item.data?.html)card.append(btn('恢复为新版本',()=>{setPage(pageId,item.data.html);dirtyPages.add(pageId);queue(pageId,'page',{html:cleanHtml(item.data.html)});closeDialog();flush();}));dialog.append(card);}
+      dialog.append(btn('关闭',closeDialog));
+    }catch{dialog.replaceChildren(el('h2','','暂时无法读取版本记录'),el('p','','正文和未同步的修改仍保留。连接恢复后可以重试。'),btn('关闭',closeDialog));}
+  }
+  async function copyLink(){
+    const url=location.origin+location.pathname+(location.hash||'');try{await navigator.clipboard.writeText(url);notify('已复制。持有这个链接的人可以查看和编辑。');}catch{dialog.replaceChildren(el('h2','','分享链接'));const field=el('textarea');field.value=url;dialog.append(field,btn('关闭',closeDialog));openDialog();field.select();}
+  }
+  function retainMissingQuotes(highlights){
+    const changed=new Set();
+    for(const highlight of highlights){
+      const body=pageBodies.get(highlight.page),page=body?.closest('.page');
+      if(!body||typeof highlight.quote!=='string'||!highlight.quote||(page.querySelector('.annotation-content')||page).textContent.includes(highlight.quote))continue;
+      let retained=body.querySelector('.reader-retained');
+      if(!retained){retained=el('div','reader-retained');retained.append(el('p','reader-retained-label','原有标注'));body.append(retained);}
+      // The quote is the smallest complete original text required by the anchor.
+      // textContent keeps imported text verbatim without executing imported HTML.
+      retained.append(el('p','',highlight.quote));changed.add(highlight.page);
+    }
+    for(const id of changed){dirtyPages.add(id);queue(id,'page',{html:currentBody(id)});}
+  }
+  importFile.addEventListener('change',async()=>{
+    const file=importFile.files?.[0];if(!file)return;
+    try{const text=await file.text();let incoming;if(file.name.endsWith('.json'))incoming=JSON.parse(text);else {const parsed=new DOMParser().parseFromString(text,'text/html');incoming=JSON.parse(parsed.getElementById('backer-annotation-data')?.textContent||'null');}
+      if(!incoming||![DOC,LEGACY_DOC].includes(incoming.documentId)||!Array.isArray(incoming.notes)||!Array.isArray(incoming.highlights))throw new Error();
+      retainMissingQuotes(incoming.highlights);
+      const current=window.BackerAnnotations.snapshot();for(const [key,kind] of [['notes','note'],['highlights','highlight']])for(const original of incoming[key]){const entry=items[kind+':'+original.id]?.deleted?{...original,id:'imported-'+newId()}:original;const existing=current[key].findIndex(x=>x.id===entry.id);if(existing>=0)current[key][existing]=entry;else current[key].push(entry);queue(kind+':'+entry.id,kind,entry);}
+      suppress=true;window.BackerAnnotations.replaceShared(current);suppress=false;annotationBaseline=clone(current);notify('已导入 '+incoming.notes.length+' 个文本框、'+incoming.highlights.length+' 处高亮，正在同步。');flush();
+    }catch{notify('未找到有效批注。请选择原阅读器「下载批注版」生成的 HTML。');}finally{importFile.value='';}
+  });
+  window.addEventListener('online',()=>{etag='';pull();});
+  window.addEventListener('offline',()=>{connected=false;updateStatus();});
+  window.addEventListener('beforeunload',e=>{if(pending.size||queuedOperation){persistPending();persistOperation();e.preventDefault();e.returnValue='';}});
+  document.addEventListener('visibilitychange',()=>{if(!document.hidden){etag='';pull();}});
+  const cached=read(CACHE,null);if(cached)applySnapshot(cached);
+  for(const [id,change] of pending)if(change.kind==='page'&&change.data?.html){setPage(id,change.data.html);dirtyPages.add(id);}
+  annotationBaseline=window.BackerAnnotations.snapshot();
+  window.BackerComm={flush,pull,snapshot:()=>({revision,items:clone(items),pending:[...pending.values()].map(clone),conflicts:[...conflicts.keys()],renderedVersions:Object.fromEntries(renderedVersions),loaded,connected}),cleanHtml};
+  pull();pollTimer=setInterval(()=>{if(!document.hidden){if(!loaded||!connected)pull();else if((pending.size||queuedOperation)&&!conflicts.size)flush();else pull();}},8000);
+})();
+</script></body></html>
